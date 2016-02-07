@@ -6,3 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+require 'csv'
+path = "/users/jilli/desktop/lexicon_db"
+
+Dir.foreach(path) do |file|
+	if file.include? ('.csv')
+		CSV.foreach ("#{path}/#{file}") do |row| 
+			Lexicon.create(category:file, code:row[0], description:row[1])
+		end
+	end
+end
