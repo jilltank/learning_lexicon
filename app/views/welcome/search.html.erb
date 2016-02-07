@@ -1,0 +1,27 @@
+<div class="main">
+	<h1>Search For An Entry</h1>
+
+	<br>
+
+	<div class="row">
+		<%= form_tag(results_path) do %>
+			<div class="form-group col-md-3">
+				<%= text_field_tag :code, nil, placeholder: "Search by Code", class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= submit_tag "Search", class: "btn btn-primary" %>
+			</div>
+		<% end %>
+	</div>
+
+	<div class="row">
+		<%= form_tag(results_path) do %>
+			<div class="form-group col-md-3">
+				<%= text_field_tag :description, nil, placeholder: "Search by Description", class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= submit_tag "Search", class: "btn btn-primary" %>
+			</div>
+		<% end %>
+	</div>
+</div>

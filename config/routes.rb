@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
 
+root 'welcome#index'
 
-root 'lexicons#index'
+get 'search' => 'welcome#search'
 
+get 'start' => 'welcome#start'
 
+get 'random' => 'welcome#random'
 
+get 'results' => 'welcome#results'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

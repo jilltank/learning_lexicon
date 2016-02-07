@@ -6,8 +6,8 @@
 	<% @lexicons.each do |entry| %>
 		<div class="col-md-4">
 			<div class="well">
-				<h2>Code: <%= entry.code %></h2>
-				<h4>Description: <%= entry.description %></h4>
+				<h2><%= entry.code.to_s[0..10] %>...</h2>
+				<h4><%= entry.description.to_s[0..50] %>...</h4>
 				<small>Category: <%= entry.category.chop.chop.chop.chop.capitalize %></small>
 			</div>
 		</div>
