@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<h1>All Lexicon Entries</h1>
+
+<div class="row">
+	<% @lexicons.each do |entry| %>
+		<div class="col-md-4">
+			<div class="well">
+				<h2>Code: <%= entry.code %></h2>
+				<h4>Description: <%= entry.description %></h4>
+				<small>Category: <%= entry.category.chop.chop.chop.chop.capitalize %></small>
+			</div>
+		</div>
+	<% end %>
+</div>
