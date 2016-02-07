@@ -6,9 +6,9 @@
 	<% @lexicons.each do |entry| %>
 		<div class="col-md-4">
 			<div class="well">
-				<h4><%= entry.code %></h4>
-				<h6><%= entry.description %></h6>
-				<p><%= entry.category %></p>
+				<h2>Code: <%= entry.code %></h2>
+				<h4>Description: <%= entry.description %></h4>
+				<small>Category: <%= entry.category.chop.chop.chop.chop.capitalize %></small>
 			</div>
 		</div>
 	<% end %>
