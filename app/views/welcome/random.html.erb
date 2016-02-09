@@ -3,6 +3,8 @@
 
 	<h2><%= @random.code %></h2>
 	<p><%= @random.description %></p>
-	<small><%= @random.category.chop.chop.chop.chop %></p>
+	<p><%= @random.category_name %></p>
+	<br>
+	<p class="center"><%= link_to "Generate Another Entry!", random_path, class: "btn btn-info" %></p>
 
 </div>

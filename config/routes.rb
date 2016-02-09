@@ -10,6 +10,10 @@ get 'random' => 'welcome#random'
 
 get 'results' => 'welcome#results'
 
+get 'all' => 'lexicons#index'
+
+get 'edit' => 'lexicons#edit'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

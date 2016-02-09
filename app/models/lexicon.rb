@@ -1,14 +1,33 @@
 class Lexicon < ActiveRecord::Base
-	# case :category
-	# 	when :category == "css.csv"
-	# 		:category = 'CSS'
-	# 	when :category == "html.csv"
-	# 		:category = 'HTML'
-	# 	when :category == "git_console.csv"
-	# 		:category = "Console & Git Commands"
-	# 	when :category == 'jQuery.csv'
-	# 		:category = 'jQuery'
+
+	def category_name
+		if "#{category}" == "html.csv"
+			return "HTML"
+		elsif "#{category}" == "css.csv"
+			return "CSS"
+		elsif "#{category}" == "jQuery.csv"
+			return "jQuery"
+		elsif "#{category}" == 'javascript.csv'
+			return "JavaScript"
+		elsif "#{category}" == 'git_console.csv'
+			return "Console & GitHub Commands"
+		else
+			return "#{category.chop.chop.chop.chop.capitalize}"
+		end
+
+	end
+	# cat = "#{category}"
+
+	# case cat
+	# 	when "css.csv"
+	# 		cat = 'CSS'
+	# 	when "html.csv"
+	# 		cat = 'HTML'
+	# 	when "git_console.csv"
+	# 		cat = "Console & Git Commands"
+	# 	when 'jQuery.csv'
+	# 		cat = 'jQuery'
 	# 	else
-	# 		:category = :category.chop.chop.chop.chop.capitalize
+	# 		cat = "#{cat.chop.chop.chop.chop.capitalize}"
 	# end
 end
