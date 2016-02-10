@@ -2,14 +2,20 @@
 
 <h1>All Lexicon Entries</h1>
 
+	<div class="btn"><%= link_to "All Categories", lexicons_path %></div>
+	<% @categories.each do |c| %>
+				<div class="btn" id="space"><%= link_to c.category_name, lexicons_path(category: c.category) %></div>
+	<% end %>
+
 <div class="row">
 	<% @lexicons.each do |entry| %>
 		<div class="col-md-4">
 			<div class="well">
 				<h2><%= entry.code.to_s[0..10] %>...</h2>
 				<h4><%= entry.description.to_s[0..50] %>...</h4>
-				<h4><%= link_to "Edit", edit_path %>
-				<small>Category: <%= entry.category %></small>
+				<div class="btn"><%= link_to "Edit", edit_path(id: entry) %></div>
+				<div class="btn"><%= link_to "Show", lexicons_show_path(id: entry) %></div>
+				<small>Category: <%= entry.category_name %></small>
 			</div>
 		</div>
 	<% end %>

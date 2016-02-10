@@ -1,10 +1,16 @@
 class LexiconsController < ApplicationController
 
 	def index
-		@lexicons = Lexicon.all
+		if params[:category] == nil
+      @lexicons = Lexicon.all
+    else
+      @lexicons = Lexicon.where(category: params[:category])
+    end
+		@categories = Lexicon.select(:category).distinct
 	end
 
 	def show
+		@lexicon = Lexicon.where(id: params[:id])
 	end
 
 	def new
@@ -12,6 +18,7 @@ class LexiconsController < ApplicationController
 	end
 
 	def edit
+		@lexicon = Lexicon.where(id: params[:id])
 	end
 
 	def create

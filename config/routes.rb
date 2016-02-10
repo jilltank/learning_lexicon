@@ -8,11 +8,13 @@ get 'start' => 'welcome#start'
 
 get 'random' => 'welcome#random'
 
-get 'results' => 'welcome#results'
+post 'results' => 'welcome#results'
 
-get 'all' => 'lexicons#index'
+get 'lexicons' => 'lexicons#index'
 
 get 'edit' => 'lexicons#edit'
+
+get 'lexicons/show' => 'lexicons#show'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

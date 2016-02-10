@@ -1,15 +1,4 @@
-<%= form_for(Lexicon.new) do |f| %>
-  <% if @lexicon.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@lexicon.errors.count, "error") %> prohibited this lexicon from being saved:</h2>
-
-      <ul>
-      <% @lexicon.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for(@lexicon) do |f| %>
 
   <div class="field">
     <%= f.label :code %><br>

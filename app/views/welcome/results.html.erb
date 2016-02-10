@@ -3,7 +3,8 @@
 
 	<ul>
 		<% @results.each do |r| %>
-			<li><%= "#{r.code} #{r.description}" %></li>
+			<li><h3><%= "#{r.code}" %></h3>
+			<p><%= "#{r.description}" %></p></li>
 		<% end %>
 	</ul>
 
