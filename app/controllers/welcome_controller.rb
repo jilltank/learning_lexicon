@@ -1,4 +1,5 @@
 class WelcomeController < ApplicationController
+
 	# def results
 	# 	if params[:code] != nil
 	# 		@results = Lexicon.includes(code: params[:code])
@@ -11,10 +12,12 @@ class WelcomeController < ApplicationController
 	def results
 		@results = []
 		Lexicon.all.each do |entry|
-			x = entry.code
-			if x == nil
+			x = entry.code.to_s
+			y = entry.description.to_s
+			z = x + y
+			if z == "" 
 				@results = @results
-			elsif x.include?(params[:code])
+			elsif z.include?(params[:search])
 				@results.push(entry)
 			end
 		end
