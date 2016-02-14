@@ -1,9 +1,10 @@
 <div class="main">
+	
 	<h1>Search Results</h1>
 
 	<ul>
 		<% @results.each do |r| %>
-			<li><h3><%= "#{r.code}" %></h3>
+			<li><h3><%= link_to"#{r.code}", lexicons_show_path(id: r) %></h3>
 			<p><%= "#{r.description}" %></p></li>
 		<% end %>
 	</ul>

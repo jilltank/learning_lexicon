@@ -6,12 +6,12 @@ class ApplicationController < ActionController::Base
   def results
 		@results = []
 		Lexicon.all.each do |entry|
-			x = entry.code.to_s
-			y = entry.description.to_s
+			x = entry.code.to_s.downcase
+			y = entry.description.to_s.downcase
 			z = x + y
 			if z == "" 
 				@results = @results
-			elsif z.include?(params[:search])
+			elsif z.include?(params[:search.downcase])
 				@results.push(entry)
 			end
 		end
