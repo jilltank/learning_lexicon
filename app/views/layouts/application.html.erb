@@ -30,7 +30,7 @@
         <li><a href="<%= lexicons_path %>"><div class="btn">Choose A Language</div></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <!-- <form class="navbar-form navbar-left" role="search"> -->
+        <div class="navbar-form navbar-left" role="search">
 
         <%= form_tag(results_path) do %>
           <div class="form-group">
@@ -38,7 +38,7 @@
           </div>
           <%= submit_tag "Search", class: "btn btn-primary" %>
         <% end %>
-      <!-- </form> -->
+      </div>
 
       </ul>
     </div><!-- /.navbar-collapse -->
