@@ -4,15 +4,11 @@ root 'welcome#index'
 
 get 'search' => 'welcome#search'
 
-get 'start' => 'welcome#start'
-
 get 'random' => 'welcome#random'
 
 post 'results' => 'welcome#results'
 
 get 'lexicons' => 'lexicons#index'
-
-get 'edit' => 'lexicons#edit'
 
 get 'lexicons/show' => 'lexicons#show'
 

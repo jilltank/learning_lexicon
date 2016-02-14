@@ -4,7 +4,7 @@
 	<meta charset=""utf-8"">
   <meta http-equiv=""X-UA-Compatible"" content=""IE=edge"">
   <meta name=""viewport"" content=""width=device-width, initial-scale=1"">
-  <title>Code Lexicon</title>
+  <title>Code Lexicons</title>
   <link href='https://fonts.googleapis.com/css?family=Codystar|Alice' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= csrf_meta_tags %>
@@ -27,20 +27,23 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="<%= random_path %>"><div class="btn">Random Entry</div></a></li>
-        <li><a href="<%= start_path %>"><div class="btn">Choose A Language</div></a></li>
+        <li><a href="<%= lexicons_path %>"><div class="btn">Choose A Language</div></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search for a Term">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+
+        <%= form_tag(results_path) do %>
+          <div class="form-group">
+            <%= text_field_tag :search, nil, placeholder: "Search for a Term", class: "form-control" %>
+          </div>
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% end %>
       </form>
+
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
 	<div class="container">
 		<%= yield %>
 	</div>

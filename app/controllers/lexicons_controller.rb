@@ -10,7 +10,7 @@ class LexiconsController < ApplicationController
 	end
 
 	def show
-		@lexicon = Lexicon.where(id: params[:id])
+		@lexicon = Lexicon.where(id: params[:id]).first
 	end
 
 	def new

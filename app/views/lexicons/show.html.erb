@@ -1,10 +1,14 @@
-<p id="notice"><%= notice %></p>
+<div class="wrapper">
 
-<div class="show-page">
-	
-	<h1><%= @lexicon %></h1>
+	<h2><%= @lexicon.code %></h2>
+	<p><%= @lexicon.description %></p>
+	<p><%= @lexicon.category %></p>
 
-	<div class="btn"><%= link_to "Edit", edit_path(@lexicon) %></div>
-	<div class="btn"><%= link_to "Back", lexicons_path %></div>
+
+	<div class="btn pull-left"><%= link_to "<-- Previous Entry", lexicons_show_path(id: @lexicon.id-1) %></div>
+
+	<div class="btn pull-right"><%= link_to "Next Entry -->", lexicons_show_path(id: @lexicon.id+1) %></div>
+
+	<br><br><br>
 
 </div>

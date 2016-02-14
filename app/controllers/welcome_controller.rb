@@ -8,21 +8,6 @@ class WelcomeController < ApplicationController
 	# 	end
 	# end
 
-
-	def results
-		@results = []
-		Lexicon.all.each do |entry|
-			x = entry.code.to_s
-			y = entry.description.to_s
-			z = x + y
-			if z == "" 
-				@results = @results
-			elsif z.include?(params[:search])
-				@results.push(entry)
-			end
-		end
-	end
-
 	def search
 	end
 
