@@ -1,0 +1,69 @@
+,
+,
+,
+,
+,
+,
+,
+cd..,"in the command prompt, this will take you back one step"
+cd foldername,"in the command prompt, this will take you to the folder"
+dir/ad,"in the command prompt, this will show you all the folders inside the current folder"
+rmdir Junk,removes folder
+mk dir (name),makes a folder
+dir,lists current directories
+cls,clears prompt
+rails new project_name,creates new project. make everything lowercase
+gems,extra ruby code that we take into our project and use - performs one or more tasks
+ctrl + c,"this stops the command prompt if it's stuck, stops server in the terminal/command prompt"
+sqlite3,sequel databse
+app,"in this folder, all the files that make up a rails project are saved here. This is where you do most of your work."
+mvc,model view controller
+helper,"each time you create a controller, it creates a helper, that's where you put extra code"
+config,
+db,database
+rails s,"""rails server"""
+[in browser window] localhost:3000,slash / localhost3000
+[in sublime text] circle next to tab (instead of x),this means that you have unsaved changes. You can hit ctrl + s to save
+.erb,stands for embedded ruby. So we can embed ruby into our html file
+any time the command prompt has a little > carrot,it's saying that the program is having errors and to run it again...ish
+config folder > routes.rb > type root 'welcome#whateverpage',this is setting up a root to whatever page you specify. You can only have one root.
+config folder > routes.rb > type get 'coolpage' => 'welcome#coolpage',"first, the hashtag is called an ""action.' second, this is another way to tell the computer this is how you want to come to the page. But again, you can only have one root."
+GitHub,stores code
+Heroku,where you show your code
+">gemfile > line 7 >
+
+group :development do
+	gem 'sqlite3'
+end
+","this is how you start to set up heroku. Basically it's saying that you can use squlite when you're developing it, but when you publish, you're going to use these gems to push it to heroku"
+terminal > bundle install,"if you ever make changes to gems, you have to go back to the command prompt and run bundle install to refresh the page"
+command prompt > git init,creates a git init - initiate repository
+command prompt > git add .,
+ruby sample.rb,"After you've used the above to navigate to the correct folder, you would use this command code to run your program."
+"command prompt > git commit -m ""first commit""",the string changes depending on what you've done
+command prompt > up key,shows you the last thing you've done/typed in
+command prompt >> echo newfile.html,this will create a new file
+ctrl +d ,"in Sublime text, this will search for the class/whatever you are cursored in and change all of them at the same time"
+DOM,document object model. All elements of whatever you create in your page. Your browser window comes with a bunch of other things that you can tap into.
+console > irb,makes a little ruby console that you can play around with
+exit,exits the irb
+C:\Users\jilli\Desktop\Ruby\classwork>ruby firstprogram.rb,"if you're in the command prompt, you've saved your program, and you've navigated to the correct directory, you can tell the command prompt ruby programname.rb
+...and it will run the program!"
+ctrl + /,comments out
+ctrl + [,indents left
+ctrl + ],indents right
+highlight interpolate thing and hit #,will put the #{ } around it
+git status,this will check to see where you are in the git pushing process
+version control,"When you have a Word File, you can either overwrite every saved file with a new save, or you have multiple versions. With Git, you don't have to. It keeps all your versions and never overwrites them."
+repository,a space where your projects live
+commit,"this is the command that gives Git power. You basicaly take a ""snapshot"" of your repo at that point in time and gives you a checkpoint that you can evaluate"
+branch,"how do multiple people work on a project at the same time without Git getting them confused? Usually, they ""branch off"" the main project witht heir own versions full of changes they themselves have made. After they're done, they can merge that branch with the master."
+git init,"initializes a new repo. Until you run this command, your directory is just a regular folder."
+git status,will tell you whether there is anything to commit (whether any changes have been made)
+git add .,"this does *not* add new files to your repo, but it kind of lines them up to ready them for a commit"
+"git commit -m ""message""",most important command. this actually takes the snapshot for version control.
+git branch branchname,"this will create a new branch, but it won't put you in it"
+git checkout branchname,it checks you IN to the branch you named
+git merge branchname,"you go into the branch that you want to be the ""main"", and then you call git merge branchname (with the branch name you want to bring all the changes with)"
+git push,pushing from local git to github
+git pull [origin master],"if you're working on your local computer and want the most up-to-date version of your repo to work with, you would pull the changes fromo github"

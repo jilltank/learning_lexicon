@@ -1,0 +1,950 @@
+ruby vs rails,"rails is the structure of the project/app, ruby is the language that it's written in. Ruby doesn't need Rails, but Rails defiinitely doesn't need Ruby. Rails allows us to use Ruby in both the back-end and the front-end"
+cd to the appropriate folder > rails new projectname,creates a new folder with a rails project
+cd into the project > bundle install,installs more gems! You have to stop the server in order for bundle install to apply
+bundle show [gemname],to see where a bundled gem is installed
+appropriately name,"what does the project do as a whole?
+starts with a letter
+all lowercase
+underscores for spaces"
+gemfile,"a gem is a Ruby program or library in a standard format available through RubyGems
+Each gem has a name, version, and platform. For example, the rails gem has a 4.2.1 version
+even rails itself is a gem, coming in. You can navigate to the gemfile to read what it does"
+jquery-rails,We no longer have to link to jquery to bring it in
+turbolinks,we'll be taking it out a lot
+README.doc,"you can/should change this. Up on github, when we're looking through instructions on gems or whatever, that's their readme file"
+app/,"organizes your application components. It's got subdirectories that hold the view (views and helpers), controller (controllers), and the backend logic (models) as well as assets and mailers"
+bin/,stands for binary. powers the commands
+config/,we'll spend much time here. We'll be mostly looking at the routes file. We might also have some places for development(local) and production(on the web)
+db/,this is where we'll see schemas & layouts for our database. there are two steps to do it. Saying you want to and then (migrating?) it into (production?)
+seeds/,"when we push into production, our data doesn't come along. But if you have a seeds file with data in it, you can see the databse. ALSO if you're working in a group and you all want the same data, you can share it using the seeds file"
+lib/,library - any kind of custom code that doesn't fit anywhere else. A lot of Ruby gems go here
+log/,"whenever we run the server, it's in the command prompt and will show certain things, but if you close the command prompt, it's all gone....except in the log! So it's a record of what happens during the time you run your server"
+public/,"a directory for the web server, and it has files that don't change, like JS files. And maybe images. Also 404 error pages are here and you could come through and change the look of them."
+test/,"for running tests, if you've heard of test-driven development. the idea is that you write tests to fail and then if they fail, you fix the code"
+tmp/,"holds temporary files, not actually utilized much"
+vendor/,"you can keep stylesheets and js stuff here, but really we will keep them in the assets"
+command prompt> rails s,"starts the server! once you see the three lines that start with brackets, you'll know the server has started"
+localhost:3000,"takes you to a webpage. Getting the ""welcome aboard"" screen means that we've done the process correctly but nothing is actually in our app"
+development.log,it's now going to hold everything we do. A permanant record of everything we hold in the server
+the command prompt,"when we're running the server, we can't do anything else in the command prompt. So you have to open a new window and use the command prompt there. So we'll have two windows open!"
+rails g,"we will see a bunch of things we can do with rails. stands for ""generator"""
+rails g controller ****morestuff,"this will generate a controller, then we need to give it a name and the actions for the methods we'll have"
+rails g controller Welcome index about contact,"so this will generate a welcome page, index, page, about page, and connect page! Just basic stuff, but still. And if you look in your routes.rb page, there will also have routes there"
+rails d controller whatevername,"will destroy 'whatever', It's for mistakes"
+welcome.coffee,"this will only pertain to the pages within to that specific coffescript controller, same thing inside welcome.css, this would only pertain to things within the welcome controller"
+config >routes.rb,"change top line to   root 'welcome#index'
+
+now that we've set the route, if we refresh localhost:3000, we will get the welcome page because that's what we've set as the route
+
+we can also customize this, like on the next two lines, thusly:
+
+  get 'thisisus' => 'welcome#about'
+
+  get 'drop_us_a_line' => 'welcome#contact'
+
+so get is called a method in ruby, but within a rails controller they're known as actions. Because we've changed the slash to a hashtag and all the other stuff, we can now link to these pages. So now we can go to http://localhost:3000/drop_us_a_line"
+rails g scaffold Pet name:string breed:string age:integer,"a scaffold sets up a MVC (model-view-controller) for a resource. A resource is basically a table in our database. So in this case, we'll have a pet table (within rails, the ruby ""objects"" are known as ""resources"". A scaffold creates both the model and the controller and views.
+
+So here's how it goes:
+
+rails g scaffold attribute:datatype attribute:datatype attribute:datatype
+
+text, string, integer, float/decimal(you usually use decimal when you have something at a price), or text(a longer string of text)
+
+when you put it in rails g scaffold -- put it as a SINGULAR resource.
+
+we put those three different datatypes in, but rails will always add 3 more for free: id, created at, updated at"
+"in the routes folder, we now have resources:pets",so what we just created is scrunched-up in there
+rake db:migrate,"this is how you actually create a table! go to db folder, and it's got our stuff inside migrate
+
+this is kind of like a fail-safe, because once you create a table, it's kind of hard to change or delete attributes(though it is easy to add stuff, apparently)"
+schema.rb,"after you rake db:migrate, you'll have all your table/resource stuff is in here too. Any time you make any kind of structural changes to your database, you have to rake db:migrate"
+project>refresh folders,sometimes you have to run this to refresh in sublime
+http://localhost:3000/pets/new,"now we can enter data into our table -- from here! it's stored in our files, but in computer code. if we want to see it, we have to run the server"
+app > views > pets >index.html.erb,"So our pet stuff is here, and you also see rails!"
+"<tbody>
+<% @pets.each do |pet| %>",this is how rails code looks like on the page
+render 'form',shows the form for the table
+partial,"the form is a partial, and you know that becuase it starts with an _ and it knows that it's not a full page, it's meant to be rendered in some other page"
+"  <table>
+  <thead>
+    <tr>
+<td>","thead = table head
+tr = table row
+td=table data, table cell"
+<id><%= pet id %></td>,this is creating an id. Rails doesn't accept 'puts' to put it on the screen. It will do %=
+controllers>concerns>pet_controller.erb,"these are all the methods that ruby has created for us. it shows the code to create a new item on the table, modify, delete, etc. petparams is bascially the pet attributes and it's a listing of those.
+
+the @pets that you'll see all over these files is defined right here"
+controllers ,"the middle man between models and views. Job is to parse the model, interact with model, and create view outputs. If you want to have any sort of page/views, you have to have a controller"
+"git clone ""paste web address""","if you're working in the group, one person will be in charge of the initial repo and making the project and everyone else will have to do this and then run rake db:migrate. If you want the same data, you would have to put it in the seed database"
+<th>ID</th>,"If you add any more categories to your little table, don't forget to go up and add a heading as well"
+<td><%= number_with_delimiter state.population %></td>,number with delimiter is what you do when you want your number to show up with commas
+        <td><%= activity.duration hours %></td>,so this will show the number and the word (hours) after the number you want
+<td><%= number_to_currency activity.cost %></td>,this will add the dollar sign and the two decimal points
+views,"pages that get rendered in the browser. here we have .html.erb files, so the ruby is converted into html to make it more dynamic"
+application.html.erb,"this layouts page serves to wrap all the other pages. So this is the only place we need like all the <DOCTYPE! html><body> etc etc tags. And we know that because of the <%= yield %>
+
+If you want a header, a footer, a title, or maybe a navbar, or something else on every single page, we could put it here"
+<% ... %>,"logic, values, etc, will run the code but won't return anything"
+<%= ... %>,will run the code and print the return value
+@instancevariable = awesome,"setting the instance variable in the controller makes it available on either the specific controller page or on the matching index page only.
+
+If we wanted it to show up in the matching index page, we would list is something similar to this:
+
+<p>
+        <%= @homeland %>
+</p>"
+"   <ul>
+	<% @countries.each do |country| %>
+		<li><%= country %></li>
+	<% end %>
+</ul>","So we would list the global variable array in the controller and then put this in the matching .html.erb page, and we'd get a pretty UL where every country in the global variable would be listed as its own LI"
+"<%= images_tag ""peru.png"" %>","images! keep them in the images folder and then refer to them thusly. just put the images in the correct assets> images folder. after the image name in quotes, we could also have other image tags:
+
+
+alt: ""Machu Picchu"",
+                          id: ""peru"",
+                          class: ""country"""
+"  <p>
+	<% @travel_pics.each do |pic| %>
+		<%= image_tag pic, width:""400"" %>
+	<% end %>
+</p>","Image arrays! (or hashes!) in the controller, list a global variable and assign the filenames for the images to the array. Then paste a code like this, and you will have each of your images printed into a pretty paragraph.
+"
+"In the Controller:
+
+          @travel_pics = {""beach"" => ""beach.jpg"", ""palawan"" => ""palawan.jpg"", ""balloons"" => ""balloons.jpg"", ""boat"" => ""boat.jpg""}
+
+In the Views:
+
+<p>
+        <% @travel_pics.each do |alt, pic| %>
+                <%= image_tag pic, alt:alt, width:""400"" %>
+        <% end %>
+</p>
+
+","so this is how you do it with hashes, and now it'll include the alt tag"
+http://localhost:3000/about?color=blue,"query strings. Anatomy
+
+route url +/route + ? + attribute=value"
+"In the controller:  
+
+  def about
+
+          @color = params[:color]
+
+  end
+
+In the views:
+
+<h1>About me</h1>
+<p>Lots of interesting stuffs.</p>
+<p>My favorite color is <%= @color %></p>
+
+Then go to http://localhost:3000/about?color=blue","any time you change the web address, the page will change. You could also do something like this:
+
+  def about
+
+          @color = params[:color]
+          @size = params[:size].to_i
+
+  end
+end"
+"   <style>
+body{
+	background: <%= @color %>;
+}
+</style>
+",so we can also use query strings to affect the style!
+<%= yield %>,"within the context of a layout, yield identifies a section where content from the view should be inserted"
+"http://getbootstrap.com/getting-started/
+
+Copy links
+
+paste in application.html.erb
+
+rubify it like so:
+
+<%= stylesheet_link_tag ""https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"", integrity:""sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"", crossorigin:""anonymous""%>","this is how to add bootstrap!. It's also thusly for javascript: 
+
+
+<%= javascript_include_tag ""https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"", integrity: ""sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"", crossorigin: ""anonymous"" %>"
+" <div class=""container"">
+<%= yield %>
+</div>","this will make it so not everything is smashed against the side of the page. And now when we use the columns on the other page, we no longer have to wrap them in the container."
+"  <body>
+<nav class=""navbar navbar-default"">
+  <div class=""container-fluid"">","So on the application.html.erb page, right below the body tag, we can copy and paste the default navbar there and we'll beautiful navbar on every one of our pages!"
+"<li><%= link_to ""About Me"", about_path %></li>","ruby links! this would link to the about page, and the link would show up on your page saying ""About Me."""
+"<li><%= link_to ""About Me"", about_path(color:""tomato"", size:12) %></li>",A link with query strings! Now the query strings are hard-coded
+"<li><%= link_to ""Home"", root_path %></li>",this is how you'd like to the homepage. the root_path is the one you set as the root
+app > assets > stylesheets > application.css,"you need to rename this one as assets.css.erb if you want to use a background image
+
+then in your newly renamed folder, you say:
+
+body{
+        background: url(<%= asset_path ""mist.jpg"" %>) no-repeat center center fixed;
+        background-size: cover;
+}
+
+and if we wanted to have an image overlay to make it more readable, in that same stylesheet, you say something like:
+
+.container{
+        background: rgba(255,255,255,0.7);
+}"
+"in the welcome controller:
+  def about
+          @color = params[:color]
+          @background = params[:background]
+  end
+
+body{
+	color: <%= @color %>;
+	background: <%= @background %>;
+}
+</style>
+
+
+<h1>About</h1>
+<p>This is a website about adventures. Obvs.</p>
+
+<%= link_to ""Make it Pink"", about_path(color: ""pink""), class: ""btn btn-primary"" %>
+<%= link_to ""Make it Blue"", about_path(color: ""blue""), class: ""btn btn-primary"" %>
+<%= link_to ""Pink!"", about_path(background: ""pink""), class: ""btn btn-primary"" %>
+<%= link_to ""Blue!"", about_path(background: ""blue""), class: ""btn btn-primary"" %>
+
+
+","if you've already linked to bootstrap, this will insert buttons that, when clicked, will do fun things with the font and background colors. basically you have to go to your controller to define your global query string variables, then on the page, tell the stylesheet to take whatever variable you assign it, and then in the body, tell the button to assign the variable to a specific color."
+click on the repo > click on the web address on the rep > go to command prompt and navigate to a folder that you want to have it in > git clone [address] > bundle install > rake db:migrate,how to clone someone's github repo
+">>> go into the controller and make a new action:
+
+def about
+end
+
+>>> make a new view
+
+inside the welcome(or whatever) controller, add a file, so call it whatever.html.erb
+
+>>> add a route to that 
+
+",how to add a page in an existing controller
+dropdown menu in navbar >>> won't work,"it won't work if the javascript stuff is in the header, so you'll have to move the JS stuff to the bottom of the body"
+"   <meta charset=""utf-8"">
+    <meta http-equiv=""X-UA-Compatible"" content=""IE=edge"">
+    <meta name=""viewport"" content=""width=device-width, initial-scale=1"">","these lines go at the very top of the header. They help to make your page be scalable, accessible, and mobile-ready"
+command prompt >> rake routes,gives you all the routes that you have. It's useful when you start having resources
+CRUD,"acronym for Create, Read, Update, Delete/Destroy
+
+this operation has different verbs between SQL (database) and HTTP (routes)
+
+SQL: insert, select, update, delete
+
+HTTP: put/post, get, put/patch, delete 
+
+--> this is what we see in the rake routes"
+scaffolds.scss,"this is a pain bc it interferes with bootstrap styling. So whenever you first create a scaffold on the project, you go into app > assets > stylesheets > scaffolds.scss, open it up, and delete all the content (not the file itself, just the content)"
+"<table class=""table"">","If you actually have to have a plain table, you have scaffolded it and you are bringing in bootstrap, go to the index.html for that page and add class=""table"" on the table div."
+,"If you want to make your table nicer, go into the _form.html.erb, change the field to form group, add the form-control class, and add the btn-success at the bottom where it says submit:
+
+    <%= f.submit class ""btn btn-succsss"" %>"
+"<div class=""well"">",well is a background that makes it nicer
+"highlight text > shift """,will wrap in quotes
+highlight text > shift 3,wrap in interpolation tags
+<%= notice %>,"this is the altert in ruby. Sometimes you can style them, delete them, or maybe just keep them."
+ActiveRecord,the rails way of doing SQL commands. All the scaffolds we've created are stored in the SQLite database locally.
+rails c,"runs the console with the database in it. It's specific to the project that you're inside. So it's not the same as irb, but it's similar. the point of it is to look in the database"
+Destination.all,will show you exactly what is in the destination (if you scaffolded a destination). It is an array of objects
+Destination.first,shows the first
+Destination.find(3),this will show you the third destination
+@destinations = Destination.where(country: params[:country]),"this is in the destinations controller. These are the query strings, so if you want to link to a specific country, this is how we could enter the link in our browser
+
+so you could try something like this
+
+localhost:3000/destinations?country=France"
+"   def index
+    if params[:country] == all
+      @destinations = Destination.all 
+    else
+      @destination = Destination.where(country: params[:country])
+  end","destinations controller
+
+Filter challenge:
+
+we want to be able to see all of them!
+we want to be able to use lowercase
+we need to be able to use snakecase for multiple-word params (this should actually take care of itself)"
+.titleize,"so if you're dealing with multiple-word strings, this will make sure that the beginning of each word is capitalized"
+@my_countries = Destination.select(:country).order(:country).distinct,"if we want to make an auto-list of links to each country, you put this in the destinations controller
+
+.order(:country)
+orders them alphabetically by country
+
+.distinct(:country)
+deletes the multiple countries (if applicable)
+
+Destination.select
+selects all the countries
+
+
+So this will create an array of all the countries that we want"
+" <ul class=""nav nav-pills"" role=""tablist"">
+  <li>
+  <%= link_to ""All Destinations"", destinations_path %>
+  </li>
+  <% @my_countries.each do |c| %>
+    <li>
+      <%= link_to c.country, destinations_path(country: c.country) %>
+    </li>
+  <% end %>
+</ul>",this is what we put in the destinations index.html. This is telling it to show all the countries for all the links
+"       if params[:country] == ""Usa""
+        @destinations = Destination.where(country: ""USA"")
+      else","So if you have countries that are all capitalized like UAE, DCR, or USA, you have to allow exceptions becuase it will read it as Usa"
+rails g migration **other stuff,"if we wanted to add another column to our scaffold, we can create a migration like this. Each of the words after this will be CamelCased
+
+rails g migration AddValueToDestinations population:integer
+
+then you have to run >>> rake db:migrate
+
+but there's no way to enter them!"
+controllers > destinations,"in def destination_params, add population
+
+    def destination_params
+      params.require(:destination).permit(:city, :country, :description, :population)
+    end
+
+"
+views > destinations > form,"now we have to add a field. We can basically copy and paste, but we need to enter :population param and the right kind of field"
+views > destinations > show,"Adding it to the show page (number_with_delimter makes it pretty with commas)
+
+         <p>
+                Population: <%= number_with_delimeter @destination.population %>
+        </p>"
+gem 'paperclip',"this is a gem from Rails. It's good for image files, etc. Go into the gemfile and write it in, and then run bundle install.
+
+it has a script to generate all the files that you need to make it work."
+rails g paperclip destination avatar,"""destination is interchangable with whatever kind of project and files you're working on.' Avatar is going to be the name of the picture, in this case."
+"app > models > destination.rb
+
+has_attached_file :avatar, :styles => { :medium => ""300x300>"", :thumb => ""100x100>"" }, :default_url => ""/images/:style/missing.png""
+ validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/",add this here. It's going to let the model know that it has an attached file named avatar and these specific styles
+"views > destinations > form
+
+  <div class=""form-group"">
+    <%= f.label ""Photo"" %><br>
+    <%= f.file_field :avatar %>
+  </div>","this is basically adding a button that says, ""put a file here!"""
+"destinations_controller:
+
+    def destination_params
+      params.require(:destination).permit(:city, :country, :description, :population, :avatar)
+    end",this is adding avatar as a parameter. the only new code here is the :avatar
+"views > destinations > show.html.erb
+
+<%= image_tag @destination.avatar.url %>","this is telling it to look in the destination (the avatar destination), and telling it to find the url path for that image_tag"
+"views > destinations > index.html.erb
+
+                <% if destination.avatar_file_name != nil %>
+          <%= image_tag destination.avatar.url(:medium), class: ""img-responsive"" %>
+        <% end %>",
+rake db:reset,resets the database
+https://developers.google.com/maps/web,"follow the prompts to get a key, then copy the key"
+views > layouts > destinations.html,"<script type=""text/javascript"" src=""https://maps/googleapis.com/maps/api/js?key=AIzaSyCflbHTM_wHXxyEVUkBF5VTmSVDMCA6GbA""></script>
+
+obviously, where it says key = you would paste your own damn key"
+views > welcome >index.html.erb,"<div id=""map-canvas""></div>"
+applications stylesheet," #map-canvas{
+	width: 100%;
+	height: 500px;
+}"
+javascripts > application.js," $(document).ready(function (){
+    function initialize() {
+      var mapOptions = {
+      center: { lat: -34.397, lng: 150.644},
+      zoom: 8
+      };
+        
+      var map = new google.maps.Map(document.getElementById('map-canvas'),
+                mapOptions);    
+    }
+      
+    google.maps.event.addDomListener(window, 'load', initialize);
+});"
+app > travel > assets > javascripts > applications.js,"if we want to have a special default lat & long, find what you want on google maps and enter it here"
+"take out turbolinks>>
+
+gemfile
+
+application.html.erb
+
+application.js",take out turbolinks in the header tag (its both in the js link and the css link)
+"app > travel > assets > javascripts > applications.js
+
+$(document).ready(function (){
+    function initialize() {
+    	var myLatlng = new google.maps.LatLng(33.7869426, -84.3862711)
+      var mapOptions = {
+      center: myLatlng,
+      zoom: 15,
+      scrollwheel: false
+      };
+        
+      var map = new google.maps.Map(document.getElementById('map-canvas'),
+                mapOptions);    
+    }","fix the zoom. it's in the map object (optional)
+
+also we can tell it not to scroll when we use the scroll wheel
+
+instead of the center being hard-coded, we can define a new variable called myLatlng and then center it on that"
+" $(document).ready(function (){
+    function initialize() {
+    	var myLatlng = new google.maps.LatLng(33.7869426, -84.3862711)
+      var mapOptions = {
+      center: myLatlng,
+      zoom: 15,
+      scrollwheel: false
+      };
+        
+      var map = new google.maps.Map(document.getElementById('map-canvas'),
+                mapOptions);    
+      var marker = new google.maps.Marker({
+      	position: myLatlng, 
+      	map: map,
+      	title: 'Machu Picchu'
+      })
+
+    }",adding a marker!
+"       var image = ""<%= asset_path 'peru.png' %>"";    
+      
+      var marker = new google.maps.Marker({
+              position: myLatlng, 
+              map: map,
+              title: 'Machu Picchu',
+              icon: image
+      });
+",adding a pretty marker
+"       var marker = new google.maps.Marker({
+      	position: myLatlng, 
+      	map: map,
+      	title: 'Machu Picchu',
+      	icon: image
+      });
+
+      var contentString = ""<h2>Machu Picchu</h2>"" + ""<p>This is a cool place.</p>"";
+      var infowindow = new google.maps.InfoWindow({content: contentString
+      });
+
+      google.maps.event.addListener(marker, 'click', function() {
+      	infowindow.open(map, marker);
+      });
+
+    }
+      ",making it clickable! So then it'll open the window and display the content that we've created.
+"      var marker = new google.maps.Marker({
+      	position: myLatlng, 
+      	map: map,
+      	title: 'Machu Picchu',
+      	icon: image,
+      	animation: google.maps.Animation.DROP",animation!
+">>> rails g migration AddCoordinatesToDestinatons latitude:float longitude:float address:string
+
+rake db:migrate
+",
+"app > controllers > destinations_controller
+
+    def destination_params
+      params.require(:destination).permit(:city, :country, :description, :population, :latitude, :longitude, :address)
+    end",So we added in the new parameters that we'd just put in the console
+"views > destinations > form
+
+  <div class=""form-group"">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, class: ""form-control"" %>
+  </div>
+    <div class=""form-group"">
+    <%= f.label :address %><br>
+    <%= f.text_field :address, class: ""form-control"" %>
+  </div>
+    <div class=""form-group"">
+    <%= f.label :latitude %><br>
+    <%= f.text_field :latitude, class: ""form-control"" %>
+  </div>
+    <div class=""form-group"">
+    <%= f.label :longitude %><br>
+    <%= f.text_field :longitude, class: ""form-control"" %>
+  </div>","adding the address, lat & long as part of the form"
+"views > destinations > show.html.erb 
+
+<div class=""show-page"">
+        <h1><%= ""#{@destination.city}, #{@destination.country}"" %></h1>
+
+        <p>
+                Population: <%= number_with_delimiter @destination.population %>
+        </p>
+
+<h1><%= @destination.address %></h1>
+<p><%= @destination.latitude %>, <%= @destination.longitude %></p>",this will actually make it show up
+"show.html.erb
+
+<div id=""destination-map""></div>
+
+
+application.css.erb
+
+#map-canvas, #destination-map{
+	width: 100%;
+	height: 500px;
+}
+","this will make a the map show up on the page, and then we've added the same formatting to the css style"
+"show.html.erb
+
+<%= javascript_tag do %>
+        latitude = '<%= j @destination.latitude.to_s %>';
+        longitude = '<%= j @destination.longitude.to_s %>';
+        address = '<%= j @destination.address.to_s %>';
+<% end %>",creating the fields for the information
+"javascripts > application.js.erb
+
+> Copy Everything
+
+javascripts > destinatons.coffee
+
+> Paste Everything, change the filename to destinations.js.erb",create the map in the javascripts file
+gem 'geocode',a geocoding gem!
+" destinations model
+
+class Destination < ActiveRecord::Base
+	def address
+		""#{city}, #{country}""
+	end
+
+	geocoded_by :address
+	after_validation :geocode 
+end",tell it to define the address by city and country so you don't have to do it yourself. then it adds the lines for the geocoder gem. So you could technically take out the address and lat&long out of the form now
+"gem 'figaro'
+
+>>>>bundle install
+>>>>figaro install","this is a fun gem that helps you hide your api key. You don't want this out there!
+
+also we'll eventually use this with mailers"
+"config > application.yml
+
+>>> google_api_key: [supersecretkey]",more hiding of the api key!
+"layouts > application.html.erb
+
+  <script type=""text/javascript"" src=""https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_api_key'] %>"">",even more hiding of the api key
+"gem 'carrierwave'
+
+>>> bundle install
+
+>>> rails g uploader Avatar
+
+>>>rails g migration AddAvatarToUsers avatar:string
+
+>>>rake db:migrate
+
+add :avatar to acceptable params in the controller
+
+in the model, you want to mount the uploader (which is a carrierwave-specific command)
+
+class Destination < ActiveRecord::Base
+  mount_uploader :avatar, AvatarUploader
+end
+
+in the snow page:
+	<%= image_tag @user.avatar.url, alt: ""#{@user.name)s profile pic}"" %>
+
+
+","this is a gem similar to paperclip. Running the uploader creates an uploader file in your folders. then of course you have to do all the other stuff here. The same as paperclip, in our views, in the form for users, we need a space to upload it."
+"in the uploader file, uncomment the following:
+
+  version :thumb do
+    process :resize_to_fit => [50, 50]
+  end
+
+  include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
+
+
+in the gemfile:
+
+gem 'rmagick'
+gem 'mini_magick'
+
+And add this to the show page:
+
+<p>
+	<%= image_tag @user.avatar.thumb.url, alt: ""#{@user.name)s profile pic}"" %>
+</p>
+","minimagic doesn't have an underscore in the uploader page, but we still need it"
+mongoDB,no-SQL database
+SQL,it's a databse that has a version for every language. We run every command using Ruby/Rails but it's store in the SQL database
+>>>rails dbconsole,this is where we can run SQL. Use a semicolon at the end of every line
+sqlite> select * from users;,"this shows us all the people from the table ""users"""
+"sqlite> select name, age from users;",what do you think this will give back
+sqlite> select * from users limit 2;,this will give back the first 2
+"sqlite> select * from users where name = ""Jack""",this will just select all the information from that one specifc person
+"sqlite> select * from users where name = ""Jack"" and location=""London""","so if there were two Jacks but only one from london, you could use this"
+"sqlite> select * from users where name = ""Jack"" or location=""Treegap""",or works too
+squlite> select * from users where age > 30;,you can use comparisons
+squlite> select * from users where name like 'J%',% is a wildcard. This specifc one would return all names that start with a J
+sqlite> update users set age = 35 where id=1;,so this will actually change the table. This will update the users table and set the age to 35 for the person with the id of 1
+"sqlite> insert into users (name, location, age, updated_at, created_at) values (""Sir Gawain"", ""London"",  29, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);","this will create a new file in the users table. the parentheses are all the attributes that it needs, but it takes for granted the ID), then we have to say values and another parentheses enter the values that correspond. You can use CURRENT_TIMESTAMP for the created_at etc stuff"
+sqlite> delete from users where name = 'Jack';,deletes! it will take out the entire record
+sqlite> .exit,I wonder what this does???
+rails c,"ActiveRecord is hiding! You can find it here. It's important because we use it in the controller. Scaffolding is important becuase it sets up certain things, but you'll probably get to a certain point where you don't want to scaffold."
+> User.all,User is a method that runs SQL commands for us. This will show us all the users
+> User.first,the first record
+> User.last,the last record
+> User.find(3),will find the third entry
+"> User.find_by(location: ""London"")","this will find the person by whatever kind of thing you enter. But if you, for example, if you have more than one person in London, this will only bring up the first entry."
+"> User.where(location: ""London"")",this will return all the people in London
+"> x = User.find(3)
+> x.location = ""Bora Bora""
+> x.save
+
+
+
+",This is updating the third entry to the location of Bora Bora.
+"> newbie = User.new
+> newbie.name = ""Erick""
+> newbie.location = ""Paris""
+> newbie.age = 49
+> newbie.save","this is how you make a new entry. It'll do the timestamp itself so you don't have to. If you want to make sure that this will work, then you can enter User.last to see it!"
+"> x = User.find(3)
+> x.destroy
+",DELETED!
+"define it in the controller (def whatever end)
+add it to the views (whatever.html.erb)
+add a route",how to add a new page to a controller that already exists
+"def index
+@cities = User.select(:location).order(:location).distinct
+end",param string
+"index.html.erb
+ 
+<% @cities.each do |c| %>
+        <%= link_to c.location, howdy_neighbors_path(city: c.location) %><br>
+<% end %>",this will show a fun linky list of all the cities in our database. Be sure to add :city as an acceptable param in the controller
+"neighbors.html.erb
+
+<h1>Other Users in <%= params[:city] %></h1>
+
+<ul>
+	<% @users.each do |u| %>
+		<li><%= ""#{u.name}, #{u.age}"" %></li>
+	<% end %>
+</ul>
+","this will show the users in that particular city. Overall, an example of scaffolding without a specific table"
+rails g model Product name:string price:float category:string,"this will create a table for you, and then it's up to you to figure out how you want to access that data"
+variable.order(:name).reverse_order.limit(5),"will order a variable by the name, then reverse the order, then only show the first 5"
+@product = Product.find(params[:id]),"this will find the product by its id. So it only returns one. Find assumes you're looking by ID. If you're looking for something else, you need find_by"
+@products = Product.where(category: params[:cat]),this will find all the products in that single category
+"<%= link_to ""Back To All Products"", inventory_all_products_path %>",So this will link you back to all products
+variable.order(area: :desc),"this will order this in descending (desc), but you can also specify to order them in ascending (asc), but it automatically assumes you want it so, so it's redundant"
+"gem 'bootstrap-sass'
+
+>>>bundle install
+
+stylesheets > change it to application.scss
+
+inside there>>> @import ""bootstrap-sprockets""; @import ""bootstrap"";
+
+inside javascripts > application.js > //= require bootstrap-sprockets
+","the bootstrap gem to bring in bootstrap. Sass-rails comes when you build the project, but you need to bring in this one. And this is how you do it.
+
+now you can put a container around the yield and if you have a table, you can give it a class of ""table"" and check to see if it's been bootstrapped"
+        <td><%= blog_post.blog_entry[0..50] %></td>,"substring - if you don't want to show it all, the brackets are telling it to go from characters 0 to 50. Remember ruby?"
+"rails g migration AddValueToComments blog_post_id:integer
+
+rake db:migrate
+
+add blog_post_id to permitted params in comment_controller",migration & association: Adding the blog post id to a specific blog is the first step. associating comments with blog posts. So now they're linked together with bonds of love. Aka a resource association.
+" $ rails g scaffold User name:string
+
+$ rails g scaffold Vehicle make:string model:string user_id:integer
+
+class User < ActiveRecord::Base
+
+    has_one :vehicle
+
+end
+
+class Vehicle < ActiveRecord::Base
+
+    belongs_to :user
+
+end
+
+",one-to-one association (you set these in the models)
+"$ rails g scaffold State name:string
+
+$ rails g scaffold City name:string state_id:integer 
+
+class State < ActiveRecord::Base
+
+    has_many :cities
+
+end
+
+class City < ActiveRecord::Base
+
+    belongs_to :state
+
+end
+",one-to-many association
+"$ rails g scaffold Course subject:string
+
+$ rails g scaffold Student name:string gpa:float
+
+$ rails g scaffold StudentCourses student_id:integer course_id:integer 
+
+class Course < ActiveRecord::Base
+
+    has_many :student_courses
+    has_many :students, :through => :student_courses
+
+end
+
+
+class Student < ActiveRecord::Base
+
+    has_many :student_courses
+    has_many :courses, :through => :student_courses
+end
+
+
+class StudentCourse < ActiveRecord::Base
+
+    belongs_to :course
+    belongs_to :student
+
+end",many-to-many association
+"in show.html.erb
+
+<% @blog_post.comments.each do |c| %>
+	<p><%= c.author%> said...</p>
+	<p><%= c.comment_entry %></p>
+<% end %>",how to make these comments show up on your page
+"the comments form!
+
+  <div class=""field"">
+    <%= f.hidden_field :blog_post_id, value: @blog_post.id %>
+  </div>
+
+","how to make comments! The form is there, but we need to make a space to show which page it should belong to. We are making it a hidden field so it doesn't show up, and then associating it with the blog post."
+"blog_posts show.html.erb
+
+<%= render 'comments/form' %>",the form for comments will now show up on the page
+"blog_post controller
+
+  def show
+    @comment = Comment.new
+  end
+
+respond_to do |format|
+      if @blog_post.save
+        format.html { redirect_to blog_post_path(id: @comment.blog_post_id), notice: 'Blog post was successfully created.' }","So this will define the comment. The second part makes it so it doesn't just show the comment, it shows the page that is associated with it."
+authentication,"do you really want to put in your own name every time you make a blog post? No? We can use authentication to do it for us.
+
+Authentication is registration and login. The most popular gem to use for it is called 'devise'"
+"gem 'devise'
+bundle install
+rails g devise:install
+rails g devise User
+rake db:migrate
+
+","putting devise into our project!
+
+We now have a User model with a bunch of devise stuff in there. In the routes, instead of resources, it gave us devise_for :users
+
+users has several routes associated with it, like sign in, etc
+
+Now we need to have a way to close our app and only allow signed-in users to use it
+
+"
+"Applcation_controller (if you want them to see nothing before sign-in)
+
+before_filter :authenticate_user!",Now it will redirect you to a whole bunch of fun sign-up/sign-in stuff. This is awesome.
+"application.html.erb
+
+<div class=""container"">
+        <div class=""pull-right"">
+                <% if user_signed_in? %>
+                        <%= link_to ""Sign Out"", destroy_user_session_path, method: :delete, class: ""btn btn-danger"" %>
+                <% end %>
+        </div>
+<%= yield %>
+</div>",yay now we can sign out!
+scaffolds.scss,"sometimes it does wonky styling, so you can delete everything inside it"
+<% current_user %>,"devise gives us this. It's available everywhere within the app. We can use it like this:
+
+<div class=""container"">
+        <div class=""pull-right"">
+                <% if user_signed_in? %>
+                        Welcome, <%= current_user.email %>
+                        <%= link_to ""Sign Out"", destroy_user_session_path, method: :delete, class: ""btn btn-danger"" %>
+                <% end %>
+        </div>
+<%= yield %>
+</div>"
+" $ rails g migration AddUserIdToBlogPosts user_id:integer
+
+$ rails g migration AddUserIdToComments user_id:integer
+
+rake db:migrate",We are going to use association again to associate the currently signed-in user to both the content of the blog post and any comments
+" class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :blog_posts
+  has_many :comments
+end
+
+
+class Comment < ActiveRecord::Base
+        belongs_to :blog_post
+        belongs_to :user
+end
+
+
+class BlogPost < ActiveRecord::Base
+        has_many :comments
+        belongs_to :user
+end",Adding keywords!
+"   <div class=""field"">
+    <%= f.hidden_field :user_id, value: curent_user.id %>
+  </div>","updating the form. Instead, add a hidden field that will pass the devised user_id"
+"   <div class=""field"">
+    <%= f.text_field :title, placeholder: ""Your Title Goes Here"" %>
+  </div>
+  <div class=""field"">
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  </div>
+  <div class=""field"">
+    <%= f.text_area :blog_entry, placeholder: ""Write something here..."" %>
+  </div>","adding little placeholders instead of labels for title, etc"
+"add user_id to params
+
+show.html.erb
+
+<p>
+  <strong>Author:</strong>
+  <%= @blog_post.user.email %>
+</p>
+
+in the index.html.erb for blog_posts, change the author part to 
+
+        <td><%= blog_post.user.email %></td>",changed to put the user email in there instead of whatever. We do have to edit the blog posts so it updates our signed-in id and will give us an error
+"in the comments form: replace the author field with 
+
+<%= f.hidden_field :user_id, value: current_user.id %>",updating the author of the comments. You can put little placeholders in if you want...
+Comment.all.destroy_all,destroys all comments. Cannot be undone.
+">>>rails g migration AddUsernameToUsers username:string
+
+>>>rake db:migrate","devise only gives us fields for email and password, but this will more things, like a username"
+rails g devise:views,"giving us access to the devise forms. In views, there is now a devise folder"
+autofocus: true,"whatever this is selected on, when you load the page, the cursor will automatically be loaded into that entry"
+" before_action :configure_permitted_parameters, if: :devise_controller?
+
+ protected
+
+ def configure_permitted_parameters
+   devise_parameter_sanitizer.for(:sign_up) { |u| u.permit({ roles: [] }, :email, :password, :password_confirmation, :username) }
+
+  devise_parameter_sanitizer.for(:account_update) { |u| u.permit({ roles: [] }, :email, :password, :password_confirmation, :current_password, :username) }
+ end",adding to user params in application controller. If you need to add anything beyond email and password
+"application.html.erb
+
+<div class=""container"">
+	<div class=""pull-right"">
+		<% if user_signed_in? %>
+			<%= link_to ""Edit Profile"", edit_user_registration_path, class: ""btn btn-primary"" %> 
+			<%= link_to ""Sign Out"", destroy_user_session_path, method: :delete, class: ""btn btn-danger"" %>
+		<% end %>
+	</div>
+<%= yield %>
+</div>
+
+</body>
+</html>
+",Adding a fun button to edit the profile on every page
+"<small><%= c.created_at.strftime(""%m/%d/%Y at %I:%M%p"") %></small>",strftime takes the timestamps and makes them much more readable. You can find all the options by reading the Ruby docs! http://ruby-doc.org/core-2.2.0/Time.html#method-i-strftime
+rails g scaffold blah blah blah,"first, scaffold is good for getting stuff out quickly, but not good for production because there are too many unnecessary things. 
+
+If the attribute is a string, you don't need to specify because rails defaults to strings.
+
+What does a scaffold generate?
+a controller with all the objects, and some actions (create, update, destroy), and all the parameters for the resource
+inside the models, it creates a new class
+inside the views, it creats some views and forms. 
+
+"
+//= require_tree .,"this is in the assets > javascripts > application.js 
+
+brings in all the other javascripts from your project"
+gem install carrierwave,"instead of writing something within the gemfile, you can use the command line to add it. You could also do more than one by saying, for example, gem install carrierwave font-awesome-rails imagemagik 
+
+"
+"rails g controller Lookup search results
+
+in search.html.erb
+
+<h1>Look Up a Contact</h1>
+
+
+<%= form_tag(results_path) do %>
+        <div class=""form-group"">
+                <%= text_field_tag :name, nil, placeholder: ""Search by Name"", class: ""form-control"" %>
+        </div>
+        <div class=""form-group"">
+                <%= submiy_tag ""Search"", class: ""btn btn-primary"" %>
+        </div>
+<% end %>
+
+<%= link_to ""Enter a New Contact"", new_contact_path %>
+
+
+inside the controller:
+
+  def results
+          name_arr = params[:name].split
+          @results = Contact.where(first_name: name_arr[0], last_name: name_arr[1])
+  end
+
+
+inside the results.html.erb:
+
+<ul>
+        <% @results.each do |r| %>
+                <li><%= ""#{r.first_name} #{r.last_name}"" %></li>
+        <% end %>
+</ul>
+
+
+in the routes, in the correct page, change 'get' to 'post'","this is going to give us the option to search through the contact list!
+
+And then we've created a form that has an input field and a search button.
+
+After that, we're telling the controller how to define the params that we're searching for. the split converts a string to an array by each space. so ""Jill Tankersley"" would become ['Jill', 'Tankersley'] and 'John Quincy Adams' would become ['John', 'Quincy', 'Adams']
+
+the stuff in the results.html.erb is telling us to print out the first and last name in the results.
+
+last thing: so when you put 'get' on the routes, it's only expecting to send information. It's not expecting to receive information. So we have to change it to 'post', so it will both send and receive info.
+
+if we want to add more search options, we basically do the same thing but change some of the params/words to city"
+"routes.rb
+
+hash vs backslash","hash points to a controller
+backslash points to a path"
+_form.html.erb,a partial. This is something that can be pulled in throughout your project just by using the render command. They always start with an underscore.
+"<%= link_to root_path do %>
+
+<% end %>",anything inside here will be a link
+" <%= link_to root_path do %>
+<span class="" ""></span>
+<% end %>",glyphicons can be spannnnny!
+https://fortawesome.github.io/Font-Awesome/,"font awesome! these are icons, and there are a lot of them. they work off of <i> tags (""icon"")"
+gem 'tzinfo-data',"for working betwixt macs and pcs. It's automatically included in PCs, but macs need it."

@@ -1,0 +1,64 @@
+CSS,"used to control the appearance of an html element and the layout of the page. The specific code is called a ""rule"""
+"h1 {
+color: red; 
+}",this example rule changes the color of html heading 1 to red
+".sampleClass {
+color: red;
+}","this is why classes and dividers are so important. If I had a class divider in my page called sampleClass, this would change all of the text inside that one class to red."
+".sampleClass p {
+color: blue;
+}","that one little p makes a huge difference. Now, inside my sampleclass divider, all of the p elements would have changed their text color to blue."
+"{ color: rgb(102,153,0);","CSS used color names, but also other ways. this is rgb numbers. They range from 0 to 255, the higher, the brighter."
+{ color: #fffff;,CSS will also read hex codes for color
+"{ font-family: 'Sample', samplebaby, sans-serif;","sets the fonts for the text. Google Fonts are the ones most commonly used. If you decide on one of theirs, you can use the link to properly document it."
+{ font-size: 10px;,"changes the font size. Can be measured in pixels, ems, or rems."
+{ background-color: red;,sets the property for the background of the html element
+{ background-image: url('http://www.sample.com');,want a background image? here you go!
+{ border: 3px solid #cc0000;,"sets the width, style, and color of an element's border. In that order."
+{ padding: 23px;,whitespace/padding between elements. helps with look and readability. This will set the padding the same on all sides.
+"{ padding-top: 0px;
+padding-bottom: 12px;
+padding-right: 20px;
+padding-left: 5px;",...And this will set the padding if you want it different on all sides.
+{ margin: auto;,"margin property creates a space for multiple elements. the margin is a transparent area outside the border of an element. Setting it to auto will make it take as much room as possible. This will set it on all sides, or you can change them seperately using the same format as the padding, for example margin-top: blah blah blah"
+".nav a {
+color: #ffffff
+}",".nav a selects any a element (aka list elements) listed inside an HTML element in the ""nav"" class"
+{ font-weight: bold;,calling float moves it to the far side of the page. you call float: right; to move it to the far right and float: left; to move to the far left
+{ text-transform: uppercase;,"if you want the text to be automatically made into a different case (uppercase, lowercase, capitalize, you would do it like this"
+".jumbotron h1 {
+font-weight: bold
+}","this is how you style the h1 (heading 1) elements that are inside the jumbotron class. If you want to style the jumbotron itself, you would just call .jumbotron { ... Or if you want to style the paraagraphs, you would call .jumbotron p { ..."
+{ display: block,"CSS treats html elements like boxes. You can put them on a new line by calling display: block. If you want them next to the one before it, you call display: inline"
+{ position: relative,"the position property is used to move html elements to a precise position on the page. You can call the following: top, bottom, left, right, or relative. Relative moves it away from where it would normally appear on the page."
+{ float: right,calling float moves it to the far side of the page. you call float: right to move it to the far right and float: left; to move to the far left
+{ clear: both,"clear turns off the float, so the property will return to it's normal spot on the page. They weren't ""clear"" on what both means. ha ha ha."
+".jumbotron .container {
+position: relative;
+}","so inside the jumbotron divider, we have another divider called ""container"". This is how you access it, and also how you access other dividers that are inside dividers."
+} top: 100px;,"if you want to add space to the top of the section, you can do it this way. You basically are telling CSS to move the top of whatever down x amount of pixels from where it currently resides."
+http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css,a whole page full of CSS properties and values
+"<head>
+<link href=""http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css"" rel=""stylesheet"">
+<link rel=""stylesheet"" href=""http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css"">
+  <link rel=""stylesheet"" href=""main.css"" >
+</head>","just like with links and CSS stylesheets, you have to tell HTML that you're using bootstrap to style your page. You put it between the font.css and the main.css. Listing it this way tells the browser that the files in your main.css stylesheet are more important than the ones in bootstrap, so that will file it accordingly."
+"visibility: hidden
+display: none","so these are things that will make stuff go away on your website. The first one will still take up space, the second one will completely disappear. You would practically use this like if you need to pass the information on down your website, but you don't want the user to see it (like sensitive or information irrelevant to them)"
+/*comment,comments on your code
+"#content{
+        background-color:#000080;
+        font-size: 18px;
+        border: 5px solid fuchsia;
+margin: 20px, 15px, 20px, 15px","changing the border around any html box (they're all boxes, fyi), instead of solid, you could have dotted or dashed or other stuff. So if you want to change the margin (and/or padding), you can enter 1-4 numbers here. If there's one, it'll change for all. If there's 2, the first will change for the top and bottom and the second will change right and left. If you have all four, it'll start at the top and work its way around clockwise. You could also do auto to center it horizontally."
+margin: auto,"centers the margin in the browser, helps to make it more scalable"
+border-radius: 10px;,rounds the border corners
+"In HTML:
+<p><img src.....alt=""whatever"" id=""floaty-pic"" width=""100px""/>lorem ipsum</p>
+In CSS:
+#floaty-pic{
+	width:200px;
+	float:left;
+	margin-right: 10px;
+}
+","So this is how you align your photo with the text, and then add a margin so it's not right on top of the text"

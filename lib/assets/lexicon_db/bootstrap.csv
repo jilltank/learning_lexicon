@@ -1,0 +1,78 @@
+Bootstrap,"a collection of pre-written CSS rules used to create websites faster. provides style components for things like grid layouts, navigation, showcases, etc"
+grid,useful way to configure page layouts. bootstraps's grid comes with 12 columns of equal size. html elements are arranged to span any number of columns in order to create custom page layouts
+"<div class=""row"">
+
+<div class=""col-md-6"">
+<h4> Content 2 </h4>
+</div>
+
+</div>","this is the code you use to specify the number of boostrap columns to span. you're looking mostly at the ""col-md-6"" and ""row"". the 6 is the reference to the number of columns to span. The row means that we've created a horizontal group."
+"<ul class=""nav nav-tabs"">
+<li> <a href=""#"">Home</a></li>
+<li class=""active""><a href=""#"">Social</a></li>
+<li> <a href=""#"">Promotions</a></li>
+<li> <a href=""#"">Updates</a></li>
+</ul>","so here we've taken normal li (list items) and turned them into navigation tabs by calling the bootstrap class ""nav nav-tabs"". the class=""active"" means that this will be the curently open tab. "
+"<ul class=""nav nav-pills"">
+...
+</ul>","this is really similar to the nav-tabs except these create pills, with the darkened pillbox being the currently active one."
+"<div class=""jumbotron"">
+...
+</div>",this is a massive bannerlike showcase featuring important content. Bootstrap refers to it as a jumbotron
+"<head>
+<link href=""http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css"" rel=""stylesheet"">
+<link rel=""stylesheet"" href=""http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css"">
+  <link rel=""stylesheet"" href=""main.css"" >
+</head>","just like with links and CSS stylesheets, you have to tell HTML that you're using bootstrap to style your page. You put it between the font.css and the main.css. Listing it this way tells the browser that the files in your main.css stylesheet are more important than the ones in bootstrap, so that will file it accordingly."
+http://getbootstrap.com/css/,website that lists a whole bunch of ways you can use bootstrap to style your website
+" <ul class=""pull-left"">","so, for example, you want your navigation bar to have left-justified and/or right-justified items, you find those specific item tags (in this case, the ul tag), and add to the tag class=""pull-left"" or class=""pull-right"". This will justify them to the left or the right, depending on which you call."
+"<div class=""container"">
+
+  <div class=""row"">
+    <div class=""col-md-4"">
+      ...
+    </div>
+
+    <div class=""col-md-4"">
+      ...
+    </div>
+
+    <div class=""col-md-4"">
+      ...
+    </div>
+
+  </div>
+</div>","this is how you use boostrap to move your pages around in a grid style. You tell the page that you want these elements all in one column by calling <div class=""column"">. You tell it to call a row the same way I mentioned above, specifying how many rows you want it to span."
+"<div class=""thumbnail"">
+<img src=""..."" >
+</div>","this is bootstrap's easy way to display grids of images. an image element is wrapped in a class element with the tag ""thumbnail."""
+getbootsrap.com/gettingstarted > basic template,copy it and paste it into a sublime text file
+bootstrap.min.css,"""minified"" > when you have this much css, it's a way to make it load faster"
+how to bring in bootstrap,"Go to the following website: https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css
+paste it into a new sublime text page
+save as > assets > stylesheets > bootstrap.min.css
+copy the entire bootstrap page and then paste it into your new sublime text file
+link to it in the header 
+<link rel=""stylesheet"" href=""assets/stylesheets/bootstrap.min.css"">
+
+
+
+"
+"<body>
+<div class=""jumbotron"">
+  <h1>Hello, world!</h1>
+  <p>...</p>
+  <p><a class=""btn btn-primary btn-lg"" href=""#"" role=""button"">Learn more</a></p>
+</div>",the jumbotron! the btn stuff has to do with the button styling!
+" 
+<div class=""container"">
+  <div class=""row"">
+    <div class=""col-md-***"">
+
+    </div>
+  </div>
+</div>
+","grid system. Where the ***s are, you can put however many columns you want it to span (out of 12 possible)"
+"<span class=""glyphicon glyphicon-plane""></span> Help","Bootstrap glyphicons! If you're gonna name it, be sure to give it a space before the name"
+getboostrap.com > Components > NavBar,copy the text and paste it into the very beginning of the body in order to have the basic navbar. Then you can modify it as you want.
+http://bootswatch.com/,"bootstrap themes! go into it, copy and paste into a stylesheet, and then link to it from your page"

@@ -1,0 +1,42 @@
+$,string' character. A sign to define/access JQuery
+(#circle),the 'selector'. this selects what we will apply our function to
+.click(function)(),"tells JQuery when it should apply the function, in case the user clicks"
+"(alert{}(""Click!"");})","the ""function"", or what we actually want to happen - in this case, fire a pop-up alert with the text ""Click!"""
+"$('#circle').hover(function(){
+$('p').html(""We've change the text!"");
+});",so the .hover here is a command to tell the code to change when we hover over it
+"$('.square').click(function() {
+$(this).css('background-color', 'blue');
+});","this is a JavaScript function that simply means the object that's been referenced immediately before (in this case, 'div').
+the css function is just like the attr function we used a minute ago, with a CSS attribute/value pair within the parentheses"
+sizzler,a library within JavaScript
+https://jqueryui.com/accordion/#collapsible,"This is for the accordion, basically, you click something and it pops up under what you've just clicked."
+what is jQuery used for?,"finding a specific HTML element
+changing HTML content
+listening to what a user does and reacting accordingly
+animating content on page
+talking over network to fetch new content without refreshing browser"
+DOM,document object model - tree-like structure created by browsers so we can quickly find html elements -using JS - all browsers interact with the DOM using JavaScript.
+"jQuery('h1')
+
+or
+
+$('h1')","Whereas you would select certain elements in CSS using hi { text-size:20px;} , in jQuery, you can just say $('h1')"
+$('h1').text();,this will return the text inside the hi element
+"$(document).ready(function(){
+  $(""span"").text(""$100"");
+});","*sometimes you'll try to modify the DOM, but the browser has not yet finished loading. We need to be sure that the DOM has finished loading before we try to use jQuery to interact with it.
+
+this code will only run once the DOM is ready"
+"$(""#destinations li"");","if the html has a ul with an id of destinations, this will select all the li elements inside that id. space matters"
+"$(#destinations > li"");","this will only select the direct descendents of the li in destinations (so if there is anything nested, it won't select those)"
+"$("".promo, #france"");",this will select elements that have **either** the promo class or the france id
+"$(""#destinations li:first"");",this will select the first li in the destinations id
+"$(""#destinations li:last"");",this will select the last li in the destinations id
+"$(""#destinations li:odd"");","this will select every other element in the destinations id. keep in mind that the first li is at index 0. So we can also select ""even"" elements by calling even"
+"$(""#destinations"").find(""li"");","this is a traversal method. it finds all the li elements like the code above, but it is a little faster"
+"$(""li"").last();","again, similar code to above, but works faster"
+"$(""li"").first().next();","this will return the li that is next to the first li (ie, it'll return the second one"
+"$(""li"").last().prev();","selects the li that is right before (previous to) the last element (ie, second to last)"
+"$(""li"").first().parent();","this will select the ""parent"" item of the first li (in this case, that would be the ul)"
+"$(""#destinations"").children(""li"");","will select only the children which are list items of the ul id=""destinations"""

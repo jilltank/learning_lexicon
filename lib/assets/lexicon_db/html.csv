@@ -1,0 +1,82 @@
+HTML,a web page is a collection of HTML elements. This is the basic skeleton.
+<h1> sample </h1>,headings. they can be between levels 1 and 6. Each level can be used multiple times and does not need to be used chronologically.
+<p> </p>,paragraph
+"<a href = ""https://www.sample.com"" > SampleTitle </a> ","links. don't forget the href. The word right after the physical address is going to be the word that shows up on the webpage to click the link. If you don't have the link yet, you can use # as a filler."
+"<img src = ""sample.png"">",images!
+"<ul>
+     <li> Sample1 </li>
+     <li> Sample2 </li>
+</ul>",bulleted list. These need both the ul and li tags
+"<!DOCTYPE html>
+<html>
+<body>
+<h1> Sample Heading! </h1>
+<p> Sample paragraph that's really short </p>
+</body>
+</html>",the skeleton of a web page. Fairly self-explanatory. Doctype is at the beginning isn't a normal tag and doesn't need a closing tag. It tells the browser which version of html you're using.
+"<div class=""nav"">
+<div class=""container"">",groups other elements together into sections of the webpage
+"<!DOCTYPE html>
+<html>
+<head>
+<link href=""main.css"" rel=""stylesheet"" />
+</head>
+<body>
+<h1> sample body </h1>
+</body>
+</html>","head element: contains the information the browser needs to display the page.
+link element: tells the browser where to find the css file used to style the page.
+the rel attribute tells the browser that the file being linked is a CSS file to style the page.
+the href attribute gives the browser the path to the css file. 
+the body element contains the content of the page that shows up in the browser"
+"<div class=""nav"">..</div>",groups elements that are part of the navigation bar. inside of this group are the a elements that we want to style.
+"<div class=""jumbotron""> ... </div>","this would be the html code for the big ""banner"" or ""large feature section"" at the beginning of the page, usually under the navigation menu. Inside the jumbotron, elements are referred to as h1 elements"
+"<head>
+<link href=""font.css"" rel=""stylesheet"">
+<link href=""main.css"" rel=""stylesheet"">","We've already discussed how you have to link to the css page you're using in the <head> tag so it knows to use html to style your page. If you also want to use fonts (so....almost always), you'll want to also link to the font that you've loaded with css. Put it in fron of the main.css link--it matters that it's in front. It has to see the font first to make it available in the page."
+<br>,break line -- doesn't have a closing tag
+<hr>,the line that goes across the page -- doesn't have a closing tag
+"<html>
+<head>
+<title> Page title goes here </title>
+</head>
+...",the title is what is going to show up at the top of the tab for that specific page
+"In sublime
+<!DOCTYPE html>
+<html> [then hit tab]",This will fill out the basic html skeleton. You have to save the doc as an .html file first
+<b>Bold Text</b>,"bolds the text. Technically, this is an old way of writing it. The html5 way of writing it is <strong></strong>"
+<em>emphasis</em>,"emphasis (italics). it used to be <i>, but now that stands for icon"
+<ol li>,ordered list (numbered)
+<ul li>,unordered list (bulleted)
+"<a href=""#"" target=""_blank"">How to Open in Tab</a>","the target=""_blank"" will open the link in a new tab"
+"<p><a href=""eats.html"">I like to eat!</a></p>","This will link to a new page on the same website that you're building -- as long as the page has already been made, put into an html file, and is named 'eats.html' or whatever you say in your link,."
+"<img src=""http://www.outthere.life/wp-content/uploads/2015/01/4754.jpg"" alt=""Camping Under the Stars"" width=""300"">","so if we want to change our image width, this is how we do it width=""whateverpixelsyouwant"". it will automatically change the height too"
+"<!DOCTYPE html>
+<head>
+	<title>My First Web Page!</title>
+	<link rel=""stylesheet"" href=""assets/stylesheets/styles.css""/>
+</head>","so this is how you link to the stylesheet. Note that this has to be done on every page. You can have one stylesheet for them all, or you can link to seperate stylesheets. Conventionally, developers usually create one stylesheet and use it for all the pages."
+"In HTML:
+<div id=""red"">
+        <p>a red wheel</p>
+</div>
+
+In CSS:
+#red {
+	background-color: red
+",ID selector. It can only be used once per page. You use id attribute in the html tag.
+"In HTML:
+<div class=""blue-text"">
+<a href=""eats.html"">I like to eat!</a>
+<a href=""travel.html"">I like to travel!</a>
+
+In CSS:
+.blue-text {
+        background-color: red
+}","class selector. Can be used many times, and can be used for any element. So you could say <p class=""whatever"">. You use the class attribute in HTML tag. You could also put an id selector inside the class selector to just make it one color."
+<!--comments-->,comments for your code
+"<div id=""content"">",for keeping together related elements
+"<span class=""red text"">","related to a div, but more about putting a box around something within an element. So you're within one element, but there's a little bit of content that you would want to make a change to."
+<em>put me in italics!<em>,italics
+"<meta charset=""UTF-8"">","The charset meta tag just explicitly defines all characters on your page, which helps for accessibility and regional translations. It’ll also reduce weird character renderings."
+"<meta name=""viewport"" content=""width=device-width, initial-scale=1"">","The viewport is the size of the window a users uses to view your site. Setting the initial scale to 1 allows for easy mobile scalability, just like you said"

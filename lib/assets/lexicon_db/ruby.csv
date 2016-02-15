@@ -1,0 +1,454 @@
+puts,"kinda similar ""print"" or ""console.log"". Simply puts whatever is behind it on the screen. In this case, Ruby will place the word 'sample' on the screen. Note that what this stands for is ""put string"", so if you said puts '20' \\ puts 20 , the output would be the same for both of them."
+-3425354,integer. Fancy word for a negative or positive (or zero!) number that doesn't have a decimal point.
+-34325.45464,"float. Yes, these too. Most programs don't use them, but they're good for 3D graphics and theoretical physics experiments. Also calculators use them."
+sample',string. yay.
+puts 'sample'*3,"this is how you would repeat a string. the output would be 'samplesamplesample'. You have to write the string first for this to work. Also, you can't concatenate a number and a string, and you can't multiply a string by another string."
+"puts 'sample\\sample'
+puts 'sample\sample'","backlash only works with special characters, not letters, so it ends up escaping itself. So these two lines would output the same thing:  sample\sample"
+sample = 'sample',variable and assignment. **note that the variable name needs to start with a lower case letter.
+"var1 = '2'
+var2 = 5
+puts var2.to_s + var2",the to_s converts a number to a string (so it can be concatenated with another string
+"var1 = '2'
+var2 = 5
+puts var1.to_i + var2","the to_i converts the string to an integer. there's also a to_f to convert the string to a float. If you're converting a float to an integer, ruby will round down."
+puts '2 sample'.to_i,"will ignore the letters and output simply 2. But only if it's at the beginning; if it starts with a letter, it'll output 0. Side note, all methods have a . in front of them. Technically even the +-*/ methods can be written like 1 .+ 1 but it's ugly and we never do that. Just understand that's how it's done."
+puts 'sample'.to_f,"again, ignores the letters, but since we want a float, the output is 0.0"
+sample = gets,"gets is a user input command. So it will want the user to input a string. 'Get string,' Heh."
+sample = gets.chomp,"when the user inputs something, they press enter, so ruby also takes the enter along with the string and breaks the line. The chomp command eats up the "
+self.puts 'sample',Self???? A special object that points to whatever variable that you are in.
+"var1 = 'sample'
+puts var1.reverse","reverse returns the string with the letters in the opposite order. In this case, it would return 'elpmas' . The variable isn't modified unless you redefine it, however."
+"var1 = 'sample'
+puts var1.length","length returns the # of characters in the variable. There are 6 letters in 'sample' so it would return 6. Note that it returns an integer, so if you want to concatenate, you would have to convert it into a string."
+"""sample"".upcase",makes all the letters uppercase
+"""sample"".downcase",make all the letters lowercase
+"""sample"".swapcase",changes the cases in all letters
+"""sample"".capitalize","capitalizes the first character in a string. If it's not a letter, nothing changes."
+"lineWidth = 50
+puts(           ""sample"".center(lineWidth))",adds spaces to the beginning and end of the string to make it centered. Note that you also have to tell Ruby just how wide you want it to be.
+"lineWidth = 50
+puts ""sample"".ljust lineWidth",left justifies the string
+"lineWidth = 50
+puts ""sample"".rjust lineWidth",right justifies the string. You can also use line .rjust/2 kinda stuff
+**,exponents
+%,modulo
+3.abs,returns the absolute value (distance of the number from 0. Basically it'll make any negative number positive).
+puts rand,will print any random number between 0.0 and 1.0. Does return a float.
+puts rand(100),will print any random number from 0 to right before 100 (so the options start at 0 and end at 99). In integer form.
+rand(1),this will always return 0
+"srand 1776
+puts(rand(100))
+puts(rand(100))
+puts(rand(100))
+puts(rand(100))
+puts(rand(100))
+
+srand 1776
+puts(rand(100))
+puts(rand(100))
+puts(rand(100))
+puts(rand(100))
+puts(rand(100))
+
+srand 0","if you want rand to spit out a set of the same numbers, then you use srand, like so. Then when you want it to clear out these saved random numbers, you call srand 0. This is an example of what the example might put out:
+
+24
+35
+36
+58
+70
+
+24
+35
+36
+58
+70
+
+568.23586"
+"puts (Math::pi)
+puts(Math::E)
+puts(Math.cos(Math::PI/3))
+puts(Math.tan(Math::PI/4))
+puts(Math.log(Math::E**2))
+puts((1 + Math.sqrt(5))/2)","these are some examples of what the math operator can do and how to call it. As you can see, you can use math for pi, sin, cos, tan, sqrt, and more"
+puts 'cat' < 'dog',"when strings get compared, Ruby looks at their lexicographical ordering -- basically their dictionary ordering. The example would return true. However, Ruby will list all capital letters before all lowercase letters, so puts Z < a would also return true"
+puts 'Zoo' < 'anteater',"true. A final note about comparison: they're not returning strings, they're returning booleans."
+"puts 'Hello, what is your name?'
+answer = gets.chomp
+if answer == 'sample'
+puts 'that's not a name'
+else
+puts 'nice name.'
+end","if/else statements. Chris Pine refers to them as ""branching."" This example, as with all others, omits the indentation."
+# This is a comment,Ruby's iteration of a single-lined comment
+"command = ''
+
+while command != 'bye'
+puts command
+command = gets.chomp
+end
+
+puts 'Come back soon!'",while loop syntax and grammar
+ctrl + c,how to escape an infinite loop!
+or // and // not,logical operators -- they work basically the same as in Python
+"flavor = vanilla
+randomArray = [1, 2, flavor, 'hot chocolate']
+puts randomArray[3]","arrays! (not the first line, duh!) But notice that you can have basically any kinds of data in an array, even like a list. index starts at 0. Also when you tell ruby to puts your array, Ruby will list every individual list item on a new line."
+puts nil,"this will print out nothing. nil is Ruby's way of saying, 'not any other object'. So if you want it to put something from a function, say, and Ruby responds with nil, it means there's nothing there."
+"desserts = ['hot chocolate', 'raspberry tea', 'cheese and fruit']
+languages.each do |lang|
+puts 'I love ' + lang + ', don't you?'
+end","so this is the each method. It goes through your array and runs the same function for every index on the array, and then it ends. The variable lang points to each index point in languages. I could have put anything in there as a variable. Also, methods like each (the ones that include do and end in their syntax) are often called iterators."
+"3.times do
+puts 'dun!'
+end","an integer method that's also an iterator. It will do what you tell it to 3 times. Ruby is nice and Englishy
+
+again, only takes integers. How do you do something 4.5 times?"
+"desserts = ['raspberry tea', 'hot chocolate', 'cheese and fruit']
+puts desserts.to_s","method .to_s . obviously this puts them all in a cute little string and lists them beautifully like [""hot chocolate"", ""raspberry tea"", ""cheese and fruit""]"
+"desserts = ['raspberry tea', 'hot chocolate', 'cheese and fruit']
+puts desserts.join(' and ')","method join . basically puts them in a line and puts whatever you put in the parenthisized string between them
+hot chocolate and raspberry tea and cheese and fruit"
+"empty = [ ]
+200.times.do
+puts empty","ruby recognizes this as an empty array, and it recognizes that you're basically tellling it to do nothing. so it prints nothing."
+"characters = ['Rey', 'BB-8']
+characters.push 'Kylo Ren'","the method push adds whatever string onto the end of your array. My array would then be changed to
+['Rey', 'BB-8', 'Kylo Ren']"
+"characters = ['Rey', 'BB-8', 'Kylo Ren']
+characters.pop","the method pop removes the last item from the list. So the array would be changed to 
+['Rey', 'BB-8']"
+"characers = ['Rey', 'BB-8], 'Kylo Ren']
+characters.last","last will return the last item on the array, but it doesn't actually modify the array"
+"characters = ['Rey', 'BB-8', 'Kylo Ren']
+characters.length",length prints out the amount of items in the array
+"characters = ['Rey', 'BB-8', 'Kylo Ren']
+characters.sort","sort will sort the array alphabetically, again, if you call puts, it will put each item on its own seperate line"
+answer = gets.chomp.downcase,"so you can stack the methods on top of each other, like soooo"
+"def starWars
+puts 'May the force be with you!'
+end",this is how you write your own function. Pretty standard stuff. Don't forget to write 'end'.
+"def starWars x
+puts 'May the force be with you!'*x
+end
+
+starWars 4","so if we also want to define parameters in our function, we stick them in here where x is. 
+
+side note: in Ruby it is called a method."
+"def starWars
+puts 'May the force be with you!'
+'Rey is the best character!'
+end","So functions always return something. If--instead of returning something, you puts something, the functinon will return the last line. If your last line puts something, it will return nil. puts always returns nil. This function's last line is 'Rey is the best character!', so this function returns 'Rey is the best character'"
+elsif,"in the if/else function, you want to add else if, you say elsif"
+return,same as in python
+"def englishNumber number
+if number < 0
+return 'Please enter a number that isn't negative.'
+end
+if number == 0
+return 'zero'
+end",I'm just pointing out here that you need to write 'end' between your if/elsif/else statements
+"a = Array.new + [12345]
+b = String.new + 'hello'
+c = Time.new","if we want to create a new object of a certain kind, we name the kind of object (capitalized, that's important!) and then add .new . unless we want it to be empty, we can also add a little thing in there at the same time. The time format follows this line:
+2016-01-18 09:31:11 -0700
+Also, we can't use this method in our number objects. We can't say Integer.new. Just write the integer!"
+"time = Time.new
+time2 = time + 1.5
+time3 = time + 60",manipulating time! adding 1.5 adds 1.5 seconds. Adding 60 adds...1 minute!
+"puts Time.mktime (2000, 1, 1)
+puts Time.mktime (1986, 6, 22, 14, 11)","so this is how you specifiy a moment in time (mktime). The more parameters you add, the more accurate your time. These would output:
+2001-01-01 00:00:00 -0800
+1986-06-22 14:11:00 -0700"
+"colorArray = [ ]
+colorHash  = { }
+
+colorArray[0]         = 'red'
+colorArray[1]         = 'green'
+colorArray[2]         = 'blue'
+colorHash['strings']  = 'red'
+colorHash['numbers']  = 'green'
+colorHash['keywords'] = 'blue'
+
+colorArray.each do |color|
+  puts color
+end
+colorHash.each do |codeType, color|
+  puts codeType + ':  ' + color
+end","colorArray = [ ] and colorHash = { } are the same as Array.new and Hash.new
+about hashes: they are somewhat similar to arrays, except instead of numbered indicies, they just have a jumble of spots for each different kind of object. Pros of hashes is that you don't have to remember where certain objects are, like you do in arrays. Cons are that hashes don't keep anything in order. It's a fun jumble. People normally use strings for hash spots, but you could technically use any kind of object.
+
+Here is the output for the example code:
+
+red
+green
+blue
+strings:  red
+numbers:  green
+keywords:  blue"
+"class Die
+
+  def roll
+    1 + rand(6)
+  end
+
+end
+
+dice = [Die.new, Die.new]
+
+dice.each do |die|
+  puts die.roll
+end","creating new classes/objects of our very own! So if you want to run something several times, you could create a new class and define it using a function, then use it over again easily. This example creates a class using a dice roll, then calls it twice into a nice little array. then it calls an each method where....wait, I'm so confused."
+"class Die
+
+  def roll
+    @numberShowing = 1 + rand(6)
+  end
+
+  def showing
+    @numberShowing
+  end
+
+end
+
+die = Die.new
+die.roll
+puts die.showing
+puts die.showing
+die.roll
+puts die.showing
+puts die.showing","instance variables are variables created inside an object. You create them inside an object using @
+
+@numberShowing
+
+If you want to use them outside the object, you would have to call the object too (the one you defined, not the @ one)
+
+die.showing"
+initialize*****,"******help****
+
+has something to do with setting up an object right when it's created.
+I think it has something to do with the idea that you're creating this new variable but you're not defining what the variable is yet. Are you basically tellilng the computer to 'look lower for the definition'?"
+"private
+
+def hungry?
+@stuffInBelly <= 2
+end
+
+exit","***means these methods are internal to the object. Not sure what exactly this means.
+
+exit commands the program to stop and exit the program right there. Say for example, you were programming a game and the FPC died."
+"toast = Proc.new do
+puts 'Cheers!'
+end
+
+toast.call
+toast.call
+toast.call","It's the ability to take a block of code (code in between do and end), wrap it up in an object (called a proc, short for procedure), store it in a variable or pass it to a method, and run the code in the block whenever you feel like (more than once, if you want). So it's kind of like a method itself, except that it isn't bound to an object (it is an object), and you can store it or pass it around like you can with any object."
+"print ""hello galaxy""","print a screen with no line break. Here's what the console returns
+
+hello galaxy => nil"
+fixedNum,sometimes ruby uses this to refer to integers
+decimal,sometimes rails use this to refer to floats
+hash,unordered collection of key/value pairs
+my_variable = 1234,a variable. Apparently you use snakecase for variables in ruby
+My_variable = 1234,"this is a variable that's capitalized because it's set as a constant, so you can't reset the value"
+"my_name = ""Aaron""
+my name[2..3]
+my_name[1...4]","slicing. The second one (with two dots) would return both the 2 and 3 index.
+""ro""
+The third one (with three dots) will not include the last number listed
+""aro""
+"
+my_name[2..my_name.length-1],"this is saying start at index one, and then stop at the length of the string minus one (so the second to last one)"
+my_name.reverse,reverses all the letters.
+my_name = my_name.upcase,"this will actually reset the variable to the value of ""Aaron"""
+my_name.downcase!,"this will also reset the variable -- it usually works, depending on the method"
+" =begin
+this is a multi-line comment
+=end",this is how you do a multi-line comment
+"age = 125
+puts ""Yesterday I turned #{age} years-old!""","interpolation! so the string has to be written in double quotes, but if you want to convert whatever variable to a string you would use #{variable_name}
+
+this works with any data type"
+my_variable.class,".class will check what type of string this is
+
+fixNum = integer. The rest is the same."
+"if var == 3 && var2 == 4
+#dosomething
+end","so if we want to say if both these things are true, we use 
+
+and    &&"
+"if var == 3 || var2 == 4
+#dosomething
+end",this is the or ||
+elsif num >= ans-5 && num <= ans+5,"so ruby won't take 2 comparisons. which is why you need &&
+
+so this won't work:
+ans-5 <= num <= ans+5"
+"  
+case option
+    when 1 #when option == 1
+        #do something
+    
+    when 2 #when option == 2
+        #do something else
+    
+    else
+        #do a third thing
+
+end","you can also use the case conditional. You don't use it if it's a situation where you use elsif. It's faster to write, but it's slower for computers to process
+
+
+you can use the && and || with case as well"
+"num = 1
+
+until num == 10
+
+    puts num
+
+    num += 1
+
+end","the until loop, in which the variable is incremented or decremented. when the given condition is no longer true, the loop stops"
+"num += 1
+num -= 1","so this is a shorthand way to reassign a variable if you're just adding, subtracting, multiplying or dividing the original variable by a simple number"
+"num = 1
+
+while num < 10
+
+    puts num
+
+    num += 1
+
+end","very similar to until, but this one is probably more often used because you don't have to be thinking of 'okay, I have to add one more to whenever I want it to stop"""
+rand(10),"we could write this as rand(0..10), if you don't specify a starting number, it will start at 0"
+require 'prime',imports the 'prime' library
+"""aaron"".include?(""r"")",this would return true. It basically c
+Array.new,this will create a new empty array. Notice that the A is capitalized
+"arr = [""John"", ""Jacob"", ""Smith""]
+arr.first",this will slice out the first name
+arr.last,this will slice out the last name
+"arr.push(""Joanna"")","this actually adds something to the array to the end. Yes, it changes the array."
+arr.pop,"so this actually subtracts something from the array. changing the array forever. BUT it will return what it subtracted. So you'd have to call the array again if you want to return it. Also, it will only pop out the last item from the array."
+arr.reverse,"changes the indicies of the arrays so the first is now the last, etc. this won't actually change the array until you redefine"
+arr.reverse!,"this is the same as the above, except this actually redefines the array. The exclamation point is used when it doesn't take an argument."
+arr.delete_at(2),this will delete the array item at index 2
+"arr.delete(""John"")","if you know the specific thing that you want, this will delete that item"
+"arr.include?(""Aaron"")","you can use this one to check to see if a specific item is included in the array
+
+it will return true or false"
+http://ruby-doc.org/core-2.2.0/Array.html,"down the side of this page, there are a whole bunch of different methods that you can use to manipulate arrays"
+"arr.insert(1, ""Aaron"")","this will insert the second argument at whatever index the first arguement defines
+so this one will insert Aaron at index 1"
+arr.shuffle!,(used the exclamation point to save). randomly changes the indicies of all the items in the array
+"my_hash = {""key"" => ""value}","hashes! You can also have multiple key and value pairs, you would have multiple commas. You can do one key that points to an array that has multiple values, but it will only do one key with one value."
+"hash = {""Aaron"" => ""instructor}
+hash[""Aaron""]","this is how you find stuff within the hash. notice the square brackets. Also notice, there are no indicies"
+"hash = {:name => ""Aaron"", :role => ""instructor""}",you can also use colons instead of strings or whatever. doing it this way will get you used to Rails
+"hash = {name: ""Aaron"", role: ""instructor""}",you can also write it like this. this makes the most sense to me
+hash.delete(:role),will delete both the key and value. You don't need the exclamation point
+"hash[""hair""] = ""brown""",adds this key and value to the hash
+"my_array = [1,2,4,5]
+my_array.each do |x|
+    puts x
+end","so this will do something to each index in the array. This specific one puts:
+
+1
+2
+4
+5"
+"my_array.sort.each do |x|
+      puts x
+end","okay, so you can run a method between the array and the .each if you want. This won't change the actual array, but it will print a list, sorted alphabetically (if you say(sort)"
+" peeps = [""Jane"",""Luke"",""Francis"",""Martha"",""Jimbo""]
+
+peeps.each_with_index do |name, index|
+    puts ""#{name} is number #{index+1}!""
+    #remember, index count starts at 0    
+end","This is somewhat of a counter method
+
+Jane is number 1!
+Luke is number 2!
+Francis is number 3!
+Martha is number 4!
+Jimbo is number 5!"
+"  state1 = {""Name""=>""Georgia"",""Capital""=>""Atlanta"",
+""Population""=>10097343,""Area""=>59425}
+state1.each do |key, value|
+    puts ""#{key}: #{value}""
+end","so usually the argument that you are putting here is normall (key, value) or just (k, v). It's similar to an array, but you do need these two arguments. And there's no way to sort them."
+"  def two_plus_two
+    sum = 2 + 2
+end",ruby is magical! you don't technically need to return a value. 
+" def convert lbs
+	kilos = lbs*0.453592
+end
+
+puts ""I need your weight!""
+weight = gets.chomp.to_i
+
+puts ""Oh, that's #{convert weight} kg.""",ruby is magical! you don't have to use parentheses when you enter a variable. Not even when you're calling it
+arr = Hash.new,converts an array to a hash. stay tuned for more information
+countries = Hash[countries.to_a.shuffle],"okay, so countries started out as a hash. then in the brackets it was converted to an array and shuffled, then it was converted back to a hash. This makes (for example) a geography quiz random so the answers can't be memorized."
+\n\n,new line
+redo,this is normally used for when you're checking and a user input is wrong. it will pop back up to the top of a loop or whatever that you're in.
+end,"if you just need an if statement, and not an elsif or an else, you can put end"
+@global_variable,initilizes a global variable
+"system ""clear""",clears the command prompt during the program
+"hash = {:name => 'Aaron'}
+
+hash['occupation'] = 'teacher'",how to add items to a hash
+data field,attributes the describe the object
+"class Object
+     #whatever kinda method you want in here
+
+
+     def initialize (attr1, attr2)
+           @attr1 = attr1
+           @attr2 = attr2
+
+
+
+
+end
+
+","how to create a class. Capitalize the name of the object. The one method you have to have for the class to work is initialize --- initialize always comes first (though outside the class you always call ""new""). Then you set global variables to those attributes. You do have to both set the variable on the definition line and then define it as a global variable in the initialize method. These variables are only global within this specific class. After initialize, the most common things to do is create methods that will return back your data."
+"class Person
+
+    def initialize(name, age)
+        @name = name
+        @age = age
+    end
+end
+
+my_profile = Person.new(""Aaron"", 34)","a more practical example of creating a class. When you are doing the Class.new, you have the enter the data in the exact same order as you call it when you create the class."
+"  class Person
+
+    ...
+
+    def birthday
+        @age += 1
+    end
+
+    def change_name(name)
+        @name = name
+    end
+
+end
+
+my_profile = Person.new(""Aaron"", 33)
+
+puts my_profile.age
+
+my_profile.birthday
+
+puts my_profile.age
+
+puts ""I am no longer #{my_profile.name}...""
+
+my_profile.change_name(""King Ruby"")
+
+puts ""My name is now #{my_profile.name}.""",this is a method that does something! 
+value.round(2),"if you have a float, you can tell it to round to the whatever-th degree, so this would round it to two decimal places. This is great for when you're talking money. Notice! This will not work if the last number ends up being a zero! Also there's an easier way to do this on Rails, apparently."
+%.2f'%x,"this is the long way to make it go to the decimal point. 2 is the decimal point that I want, and x is a variable placeholder name. So you could put any variable where the x currently is."
+helper,"you can write a method in the specific helper. you can write methods in here in raw ruby. if you want to include it in a controller, then at the top, you need to right include [PagenameHelper]"
