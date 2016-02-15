@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 require 'csv'
-path = "../lib/assets/lexicon_db"
+path = "#{Rails.root.to_s}/lib/assets/lexicon_db"
 
 Dir.foreach(path) do |file|
 	if file.include? ('.csv')
