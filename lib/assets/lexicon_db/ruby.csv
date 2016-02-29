@@ -225,17 +225,14 @@ puts die.showing","instance variables are variables created inside an object. Yo
 If you want to use them outside the object, you would have to call the object too (the one you defined, not the @ one)
 
 die.showing"
-initialize*****,"******help****
-
-has something to do with setting up an object right when it's created.
-I think it has something to do with the idea that you're creating this new variable but you're not defining what the variable is yet. Are you basically tellilng the computer to 'look lower for the definition'?"
+initialize,creating this new variable but you're not defining what the variable is yet. basically tellilng the computer to 'look lower for the definition'.
 "private
 
 def hungry?
 @stuffInBelly <= 2
 end
 
-exit","***means these methods are internal to the object. Not sure what exactly this means.
+exit","This is development-facing, not user-facing.
 
 exit commands the program to stop and exit the program right there. Say for example, you were programming a game and the FPC died."
 "toast = Proc.new do
@@ -452,3 +449,18 @@ puts ""My name is now #{my_profile.name}.""",this is a method that does somethin
 value.round(2),"if you have a float, you can tell it to round to the whatever-th degree, so this would round it to two decimal places. This is great for when you're talking money. Notice! This will not work if the last number ends up being a zero! Also there's an easier way to do this on Rails, apparently."
 %.2f'%x,"this is the long way to make it go to the decimal point. 2 is the decimal point that I want, and x is a variable placeholder name. So you could put any variable where the x currently is."
 helper,"you can write a method in the specific helper. you can write methods in here in raw ruby. if you want to include it in a controller, then at the top, you need to right include [PagenameHelper]"
+" Dir.foreach(path) do |file|
+        CSV.foreach (""#{path}/#{file}"") {|row| Entry.create(category:file - '.csv', code:row[0], description:row[1]) }
+end","okay! 
+Dir will look through the folder specified in that path
+CSV will look through each line/row in a csv file
+.create both creates a new Whatever object AND saves it (new only creates it, doesn't save)
+"
+(condition) ? (do this if true) : (do this if false),ternary operator
+created_at.time_ago_in_words,so this will show when this variable was created at with the time ago in words
+%w(1 2 3 4 5 6 7 8 9 10),"if you know that you want to put out an array of single-word (or number) strings, this is a shorthand way to write the array"
+if !entry.blank?,"this is saying if entry is not blank. (not is defined by the exclamation point. This is also a built-in ruby method that would check whether the entry is either empty or nil, so it's really efficient."
+"(set the user as a variable in rails c)
+x.admin = true
+x.save",setting a user as an admin for the gem cancancan. And likely others.
+"city = params[:city].gsub("" "", ""_"")",".gsub is used in a string. It finds the first item specified and replaces it with the second item specified. So in this case, it will change a city like ""Las Vegas"" to ""Las_Vegas"""

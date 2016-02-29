@@ -1,29 +1,3 @@
-# namespace :database do
-#   desc "TODO"
-#   task my_task1: :environment do
-#   	Lexicon.all.each do |entry|
-#   		if entry == nil
-#   			next
-#   		elsif entry.category == "html.csv"
-# 				@entry.category = "HTML"
-# 			elsif entry.category == "css.csv"
-# 				@entry.category = "CSS"
-# 			elsif entry.category == "jQuery.csv"
-# 				@entry.category = "jQuery"
-# 			elsif entry.category == 'javascript.csv'
-# 				@entry.category = "JavaScript"
-# 			elsif entry.category == 'git_console.csv'
-# 				@entry.category = "Console & GitHub Commands"
-# 			elsif @entry.category == '' || @entry.category == nil
-# 				@entry.category = "n/a"
-# 			else
-# 				@entry.category = entry.category.chop.chop.chop.chop.capitalize
-# 			end
-#   	end
-#   end
-# end
-
-
 namespace :database do
 	desc "TODO"
 	task my_task1: :environment do
