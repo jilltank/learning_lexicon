@@ -1,6 +1,10 @@
 <div class="wrapper">
 
+<% if params[:category] == nil %>
 	<h1>All Categories</h1>
+<% else %>
+	<h1><%= "#{params[:category]}" %></h1>
+<% end %>
 
 		<p>Change Categories Below</p>
 
@@ -15,7 +19,11 @@
 		<% @lexicons.each do |entry| %>
 			<div class="col-md-4">
 				<div class="well">
-					<h2><%= entry.code.to_s[0..10] %>...</h2>
+					<% if entry.code.to_s.length < 5 %>
+						<h2><%= entry.code.to_s %></h2>
+					<% else %>
+						<h2><%= entry.code.to_s[0..10] %>...</h2>
+					<% end %>
 					<h4><%= entry.description.to_s[0..50] %>...</h4>
 					<small>Category: <%= entry.category %></small>
 					<br><br>
