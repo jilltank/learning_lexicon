@@ -1,5 +1,7 @@
 module ApplicationHelper
 
+	#individually checks each word entered into the form and returns the entry as a result if >= 70% of the words are included anywhere inside the entry
+
 	def find_results
 		search = params[:search.downcase].split(" ")
 		hash = {}
