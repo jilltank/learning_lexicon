@@ -1,7 +1,7 @@
 <div class="main">
 <h1>Random Entry</h1>
 
-	<h2><%= @random.code %></h2>
+	<h2><%= link_to "#{@random.code}", lexicons_show_path(id: @random.id) %></h2>
 	<p><%= @random.description %></p>
 	<p><%= link_to "#{@random.category}", lexicons_path(category: @random.category) %></p>
 	<br>
